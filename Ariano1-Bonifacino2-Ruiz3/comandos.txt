@@ -1,8 +1,10 @@
+cd Ariano1-Bonifacino2-Ruiz3
 java -jar jflex-full-1.9.1.jar pronosticos.flex
 java -jar java-cup-11b.jar pronosticos.cup
 javac -cp ".;java-cup-11b-runtime.jar" *.java
 java -cp ".;java-cup-11b-runtime.jar" Main prueba.txt
 
+cd Ariano1-Bonifacino2-Ruiz3
 java -jar jflex-full-1.9.1.jar pronosticos.flex
 java -jar java-cup-11b.jar pronosticos.cup
 javac -cp ".;java-cup-11b-runtime.jar" *.java
