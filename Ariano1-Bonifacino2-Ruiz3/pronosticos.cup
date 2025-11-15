@@ -44,7 +44,6 @@ non terminal Object fixture;
 
 non terminal Object series;
 non terminal Object serie;
-non terminal Object serie_nombre;
 
 non terminal Object lista_equipos;
 non terminal Object equipo;
@@ -53,13 +52,12 @@ non terminal Object partidos;
 non terminal Object partido;
 
 non terminal Object participantes;
-non terminal Object lista_participantes;
 non terminal Object participante;
-
-non terminal Object nombre_participante;
 
 non terminal Object pronosticos;
 non terminal Object pronostico;
+
+non terminal String nombre_compuesto;
 
 // ==========================
 // SÍMBOLO INICIAL
@@ -80,7 +78,7 @@ inicio ::=
     series
     participantes
     {:
-        // (acciones iniciales)
+        System.out.println(">>> Parseo COMPLETO: campeonato, fixture, series y participantes cargados correctamente.");
     :}
 ;
 
@@ -93,7 +91,16 @@ campeonato ::= CAMPEONATO nombre_compuesto NUMERO
                     String nombre = (String)$2; // $2 es el valor de nombre_compuesto (un String que da el lexer), el 2 es porque es el segunod valor que aparece.
                     int anio = (Integer)$3;     // $3 es el valor del token NUMERO (un Integer que da el lexer), el 3 es porque es el tercero valor que aparece.
                     campeonatoActual = new Campeonato(nombre, anio);
+
+                    System.out.println(">>> Campeonato cargado: " + nombre + " (" + anio + ")");
                :}
+;
+
+nombre_compuesto ::=
+      NOMBRE
+        {: RESULT = (String)$1; :}
+    | nombre_compuesto NOMBRE
+        {: RESULT = ((String)$1) + " " + (String)$2; :}
 ;
 
 
@@ -135,14 +142,8 @@ serie ::= SERIE nombre_compuesto
                 for (Partido partido : partidos) serieActual.addPartido(partido);
 
                 campeonatoActual.agregarSerie(serieActual);
+                System.out.println(">>> Serie cargada: " + nombre + " con " + equipos.size() + " equipos y " + partidos.size() + " partidos.");
           :}
-;
-
-
-// nombre de serie: 1 o más palabras
-serie_nombre ::=
-      NOMBRE
-    | serie_nombre NOMBRE
 ;
 
 // --------------------------
@@ -150,8 +151,11 @@ serie_nombre ::=
 // --------------------------
 equipo ::=
       NOMBRE
+        {: RESULT = (String)$1; :}
     | equipo NOMBRE
+        {: RESULT = ((String)$1) + " " + (String)$2; :}
 ;
+
 
 lista_equipos ::= equipo
                  {:
@@ -227,18 +231,6 @@ participantes ::= participante
                  :}
 ;
 
-
-lista_participantes ::=
-      participante
-    | lista_participantes SEPARADOR participante
-;
-
-// nombre del participante (varias palabras)
-nombre_participante ::=
-      NOMBRE
-    | nombre_participante NOMBRE
-;
-
 // --------------------------
 // PARTICIPANTE
 // --------------------------
@@ -256,6 +248,7 @@ participante ::= SEPARADOR
                     for (PronosticoPartido pr : lista)
                         participante.addPronostico(pr);
 
+                    System.out.println(">>> Participante cargado: " + nombre + " (" + email + ") con " + lista.size() + " pronósticos.");
                     RESULT = participante;
                   :}
 ;

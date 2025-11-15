@@ -30,15 +30,14 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\032\000\002\002\004\000\002\002\006\000\002\003" +
-    "\005\000\002\004\003\000\002\005\003\000\002\005\004" +
-    "\000\002\006\011\000\002\007\003\000\002\007\004\000" +
-    "\002\011\003\000\002\011\004\000\002\010\003\000\002" +
-    "\010\005\000\002\012\003\000\002\012\004\000\002\013" +
-    "\014\000\002\014\005\000\002\015\003\000\002\015\005" +
-    "\000\002\017\003\000\002\017\004\000\002\016\010\000" +
-    "\002\020\003\000\002\020\004\000\002\021\011\000\002" +
-    "\021\012" });
+    "\000\027\000\002\002\004\000\002\002\006\000\002\003" +
+    "\005\000\002\017\003\000\002\017\004\000\002\004\003" +
+    "\000\002\005\003\000\002\005\004\000\002\006\011\000" +
+    "\002\010\003\000\002\010\004\000\002\007\003\000\002" +
+    "\007\005\000\002\011\003\000\002\011\004\000\002\012" +
+    "\014\000\002\013\003\000\002\013\004\000\002\014\011" +
+    "\000\002\015\003\000\002\015\004\000\002\016\011\000" +
+    "\002\016\012" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -46,44 +45,44 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Parse-action table. */
   protected static final short[][] _action_table = 
     unpackFromStrings(new String[] {
-    "\000\103\000\004\004\005\001\002\000\004\005\014\001" +
-    "\002\000\004\026\011\001\002\000\004\002\007\001\002" +
-    "\000\004\002\001\001\002\000\006\022\012\026\013\001" +
-    "\002\000\010\017\uffee\022\uffee\026\uffee\001\002\000\004" +
-    "\005\uffff\001\002\000\010\017\uffed\022\uffed\026\uffed\001" +
-    "\002\000\004\006\ufffe\001\002\000\004\006\017\001\002" +
-    "\000\006\006\017\020\052\001\002\000\004\026\022\001" +
-    "\002\000\006\006\ufffd\020\ufffd\001\002\000\006\007\023" +
-    "\026\024\001\002\000\006\007\ufffa\026\ufffa\001\002\000" +
-    "\004\013\025\001\002\000\006\007\ufff9\026\ufff9\001\002" +
-    "\000\004\026\027\001\002\000\006\014\033\015\032\001" +
-    "\002\000\012\014\ufff8\015\ufff8\022\ufff8\026\ufff8\001\002" +
-    "\000\010\014\ufff6\015\ufff6\026\031\001\002\000\012\014" +
-    "\ufff7\015\ufff7\022\ufff7\026\ufff7\001\002\000\004\026\027" +
-    "\001\002\000\004\010\034\001\002\000\004\022\040\001" +
-    "\002\000\010\006\ufff4\010\ufff4\020\ufff4\001\002\000\010" +
-    "\006\ufffb\010\034\020\ufffb\001\002\000\010\006\ufff3\010" +
-    "\ufff3\020\ufff3\001\002\000\004\023\041\001\002\000\004" +
-    "\017\042\001\002\000\004\025\043\001\002\000\004\026" +
-    "\027\001\002\000\006\022\045\026\031\001\002\000\004" +
-    "\017\046\001\002\000\004\026\027\001\002\000\006\022" +
-    "\050\026\031\001\002\000\010\006\ufff2\010\ufff2\020\ufff2" +
-    "\001\002\000\010\014\ufff5\015\ufff5\026\031\001\002\000" +
-    "\004\011\055\001\002\000\004\002\000\001\002\000\006" +
-    "\006\ufffc\020\ufffc\001\002\000\004\026\011\001\002\000" +
-    "\004\020\060\001\002\000\004\020\ufff0\001\002\000\006" +
-    "\002\ufff1\011\055\001\002\000\004\020\uffef\001\002\000" +
-    "\006\017\063\026\013\001\002\000\004\024\064\001\002" +
-    "\000\004\012\065\001\002\000\004\022\066\001\002\000" +
-    "\004\016\072\001\002\000\006\020\uffec\022\066\001\002" +
-    "\000\006\020\uffeb\022\uffeb\001\002\000\006\020\uffea\022" +
-    "\uffea\001\002\000\006\021\073\026\027\001\002\000\004" +
-    "\026\027\001\002\000\006\022\075\026\031\001\002\000" +
-    "\004\017\076\001\002\000\004\026\027\001\002\000\006" +
-    "\022\100\026\031\001\002\000\006\020\uffe9\022\uffe9\001" +
-    "\002\000\006\022\102\026\031\001\002\000\004\017\103" +
-    "\001\002\000\004\026\027\001\002\000\006\022\105\026" +
-    "\031\001\002\000\006\020\uffe8\022\uffe8\001\002" });
+    "\000\077\000\004\004\005\001\002\000\004\005\014\001" +
+    "\002\000\004\026\010\001\002\000\004\002\007\001\002" +
+    "\000\004\002\001\001\002\000\012\007\ufffe\017\ufffe\022" +
+    "\ufffe\026\ufffe\001\002\000\006\022\012\026\013\001\002" +
+    "\000\004\005\uffff\001\002\000\012\007\ufffd\017\ufffd\022" +
+    "\ufffd\026\ufffd\001\002\000\004\006\ufffc\001\002\000\004" +
+    "\006\020\001\002\000\006\006\020\020\050\001\002\000" +
+    "\006\006\ufffb\020\ufffb\001\002\000\004\026\010\001\002" +
+    "\000\006\007\022\026\013\001\002\000\004\013\023\001" +
+    "\002\000\004\026\025\001\002\000\006\014\031\015\030" +
+    "\001\002\000\012\014\ufff8\015\ufff8\022\ufff8\026\ufff8\001" +
+    "\002\000\010\014\ufff6\015\ufff6\026\027\001\002\000\012" +
+    "\014\ufff7\015\ufff7\022\ufff7\026\ufff7\001\002\000\004\026" +
+    "\025\001\002\000\004\010\032\001\002\000\004\022\036" +
+    "\001\002\000\010\006\ufff4\010\ufff4\020\ufff4\001\002\000" +
+    "\010\006\ufff9\010\032\020\ufff9\001\002\000\010\006\ufff3" +
+    "\010\ufff3\020\ufff3\001\002\000\004\023\037\001\002\000" +
+    "\004\017\040\001\002\000\004\025\041\001\002\000\004" +
+    "\026\025\001\002\000\006\022\043\026\027\001\002\000" +
+    "\004\017\044\001\002\000\004\026\025\001\002\000\006" +
+    "\022\046\026\027\001\002\000\010\006\ufff2\010\ufff2\020" +
+    "\ufff2\001\002\000\010\014\ufff5\015\ufff5\026\027\001\002" +
+    "\000\004\011\055\001\002\000\006\006\ufffa\020\ufffa\001" +
+    "\002\000\006\002\000\020\050\001\002\000\006\002\ufff1" +
+    "\020\ufff1\001\002\000\006\002\ufff0\020\ufff0\001\002\000" +
+    "\004\026\010\001\002\000\006\017\057\026\013\001\002" +
+    "\000\004\024\060\001\002\000\004\012\061\001\002\000" +
+    "\004\022\062\001\002\000\004\016\066\001\002\000\010" +
+    "\002\uffef\020\uffef\022\062\001\002\000\010\002\uffee\020" +
+    "\uffee\022\uffee\001\002\000\010\002\uffed\020\uffed\022\uffed" +
+    "\001\002\000\006\021\067\026\025\001\002\000\004\026" +
+    "\025\001\002\000\006\022\071\026\027\001\002\000\004" +
+    "\017\072\001\002\000\004\026\025\001\002\000\006\022" +
+    "\074\026\027\001\002\000\010\002\uffec\020\uffec\022\uffec" +
+    "\001\002\000\006\022\076\026\027\001\002\000\004\017" +
+    "\077\001\002\000\004\026\025\001\002\000\006\022\101" +
+    "\026\027\001\002\000\010\002\uffeb\020\uffeb\022\uffeb\001" +
+    "\002" });
 
   /** Access to parse-action table. */
   public short[][] action_table() {return _action_table;}
@@ -91,32 +90,30 @@ public class parser extends java_cup.runtime.lr_parser {
   /** <code>reduce_goto</code> table. */
   protected static final short[][] _reduce_table = 
     unpackFromStrings(new String[] {
-    "\000\103\000\006\002\005\003\003\001\001\000\004\004" +
-    "\014\001\001\000\004\017\007\001\001\000\002\001\001" +
+    "\000\077\000\006\002\005\003\003\001\001\000\004\004" +
+    "\014\001\001\000\004\017\010\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\006" +
-    "\005\015\006\017\001\001\000\006\006\053\014\052\001" +
-    "\001\000\004\007\020\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
-    "\001\000\006\010\025\011\027\001\001\000\002\001\001" +
+    "\005\015\006\016\001\001\000\010\006\050\013\051\014" +
+    "\052\001\001\000\002\001\001\000\004\017\020\001\001" +
+    "\000\002\001\001\000\002\001\001\000\006\007\023\010" +
+    "\025\001\001\000\002\001\001\000\002\001\001\000\002" +
+    "\001\001\000\002\001\001\000\004\010\046\001\001\000" +
+    "\006\011\033\012\032\001\001\000\002\001\001\000\002" +
+    "\001\001\000\004\012\034\001\001\000\002\001\001\000" +
+    "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
+    "\010\041\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\010\044\001\001\000\002\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\011\050\001\001\000\006\012\035\013\034\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\013\036\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\011\043\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\011\046\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\006\015" +
-    "\055\016\056\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\017\061\001\001\000\002\001\001\000\002\001" +
-    "\001\000\004\016\060\001\001\000\002\001\001\000\002" +
-    "\001\001\000\002\001\001\000\002\001\001\000\006\020" +
-    "\066\021\067\001\001\000\002\001\001\000\004\021\070" +
-    "\001\001\000\002\001\001\000\002\001\001\000\004\011" +
-    "\073\001\001\000\004\011\100\001\001\000\002\001\001" +
-    "\000\002\001\001\000\004\011\076\001\001\000\002\001" +
-    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\011\103\001\001\000\002\001\001\000\002\001" +
-    "\001" });
+    "\004\014\053\001\001\000\002\001\001\000\002\001\001" +
+    "\000\004\017\055\001\001\000\002\001\001\000\002\001" +
+    "\001\000\002\001\001\000\006\015\062\016\063\001\001" +
+    "\000\002\001\001\000\004\016\064\001\001\000\002\001" +
+    "\001\000\002\001\001\000\004\010\067\001\001\000\004" +
+    "\010\074\001\001\000\002\001\001\000\002\001\001\000" +
+    "\004\010\072\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\010\077\001" +
+    "\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
   public short[][] reduce_table() {return _reduce_table;}
@@ -155,7 +152,14 @@ public class parser extends java_cup.runtime.lr_parser {
 
 
 
-    // (bloque global, dejalo vacío por ahora)
+    //Crear Campeonato
+    //Aca van variables globales (se pueden acceder desde cualquier parte del codigo)
+    Campeonato campeonatoActual = null;
+    Serie serieActual = null;
+
+    Map<Integer, Partido> partidosPorNumero = new HashMap<>();
+
+    List<Participante> participantes = new ArrayList<>();
 
 
 /** Cup generated class to encapsulate user supplied action code.*/
@@ -201,25 +205,48 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 		
-        // (acciones iniciales)
+        System.out.println(">>> Parseo COMPLETO: campeonato, fixture, series y participantes cargados correctamente.");
     
               CUP$parser$result = parser.getSymbolFactory().newSymbol("inicio",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 2: // campeonato ::= CAMPEONATO nombre_participante NUMERO 
+          case 2: // campeonato ::= CAMPEONATO nombre_compuesto NUMERO 
             {
               Object RESULT =null;
 		
-        // (guardar campeonato)
-    
+                    //Creamos el objeto de campeonato
+                    String nombre = (String)$2; // $2 es el valor de nombre_compuesto (un String que da el lexer), el 2 es porque es el segunod valor que aparece.
+                    int anio = (Integer)$3;     // $3 es el valor del token NUMERO (un Integer que da el lexer), el 3 es porque es el tercero valor que aparece.
+                    campeonatoActual = new Campeonato(nombre, anio);
+
+                    System.out.println(">>> Campeonato cargado: " + nombre + " (" + anio + ")");
+               
               CUP$parser$result = parser.getSymbolFactory().newSymbol("campeonato",1, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 3: // fixture ::= FIXTURE 
+          case 3: // nombre_compuesto ::= NOMBRE 
+            {
+              String RESULT =null;
+		 RESULT = (String)$1; 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("nombre_compuesto",13, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 4: // nombre_compuesto ::= nombre_compuesto NOMBRE 
+            {
+              String RESULT =null;
+		 RESULT = ((String)$1) + " " + (String)$2; 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("nombre_compuesto",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 5: // fixture ::= FIXTURE 
             {
               Object RESULT =null;
 		
@@ -230,7 +257,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 4: // series ::= serie 
+          case 6: // series ::= serie 
             {
               Object RESULT =null;
 
@@ -239,7 +266,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 5: // series ::= series serie 
+          case 7: // series ::= series serie 
             {
               Object RESULT =null;
 
@@ -248,31 +275,26 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 6: // serie ::= SERIE serie_nombre EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE partidos 
+          case 8: // serie ::= SERIE nombre_compuesto EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE partidos 
             {
               Object RESULT =null;
 		
-        // (guardar serie)
-    
+                //Creamos el objeto de seriie
+                String nombre = (String)$2;
+                serieActual = new Serie(nombre);
+
+                // Agregamos los equipos cargados previamente
+                List<String> equipos = (List<String>)$5;
+                for (String equipo : equipos) serieActual.addEquipo(equipo);
+
+                // Agregamos los partidos ya cargados
+                List<Partido> partidos = (List<Partido>)$7;
+                for (Partido partido : partidos) serieActual.addPartido(partido);
+
+                campeonatoActual.agregarSerie(serieActual);
+                System.out.println(">>> Serie cargada: " + nombre + " con " + equipos.size() + " equipos y " + partidos.size() + " partidos.");
+          
               CUP$parser$result = parser.getSymbolFactory().newSymbol("serie",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 7: // serie_nombre ::= NOMBRE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("serie_nombre",5, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // serie_nombre ::= serie_nombre NOMBRE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("serie_nombre",5, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -280,8 +302,8 @@ class CUP$parser$actions {
           case 9: // equipo ::= NOMBRE 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("equipo",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		 RESULT = (String)$1; 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("equipo",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -289,8 +311,8 @@ class CUP$parser$actions {
           case 10: // equipo ::= equipo NOMBRE 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("equipo",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		 RESULT = ((String)$1) + " " + (String)$2; 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("equipo",6, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -298,8 +320,12 @@ class CUP$parser$actions {
           case 11: // lista_equipos ::= equipo 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_equipos",6, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		
+                     List<String> lista1 = new ArrayList<>();
+                     lista1.add((String)$1);
+                     RESULT = lista1;
+                 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_equipos",5, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -307,8 +333,12 @@ class CUP$parser$actions {
           case 12: // lista_equipos ::= lista_equipos COMA equipo 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_equipos",6, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		
+                     List<String> lista2 = (List<String>)$1;
+                     lista2.add((String)$3);
+                     RESULT = lista2;
+                 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_equipos",5, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -316,8 +346,12 @@ class CUP$parser$actions {
           case 13: // partidos ::= partido 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("partidos",8, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		
+                List<Partido> lista1 = new ArrayList<>();
+                lista1.add((Partido)$1);
+                RESULT = lista1;
+             
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("partidos",7, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -325,8 +359,12 @@ class CUP$parser$actions {
           case 14: // partidos ::= partidos partido 
             {
               Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("partidos",8, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+		
+                List<Partido> lista2 = (List<Partido>)$1;
+                lista2.add((Partido)$2);
+                RESULT = lista2;
+             
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("partidos",7, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -335,107 +373,133 @@ class CUP$parser$actions {
             {
               Object RESULT =null;
 		
-        // (guardar partido)
-    
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("partido",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+                int num = (Integer)$2;
+                String fecha = (String)$3;
+                String estadio = (String)$5;
+
+                String equipoLocal = (String)$6;
+                int golesEquipoLocal = (Integer)$7;
+                String equipoVisitante = (String)$9;
+                int golesEquipoVisitante = (Integer)$10;
+
+                Partido p = new Partido(num, fecha, estadio, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante);
+
+                partidosPorNumero.put(num, p); //Esteto es para guardar en el Hash del parser el objeto partido identificado por su numero (para acceder a el despuews por esa clave)
+
+                RESULT = p;
+            
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("partido",8, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-9)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // participantes ::= SEPARADOR lista_participantes SEPARADOR 
+          case 16: // participantes ::= participante 
             {
               Object RESULT =null;
 		
-        // (guardar lista de participantes)
-    
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("participantes",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+                    List<Participante> lista1 = new ArrayList<>();
+                    lista1.add((Participante)$1);
+                    participantes = lista1;
+                    RESULT = lista1;
+                 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // lista_participantes ::= participante 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_participantes",11, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // lista_participantes ::= lista_participantes SEPARADOR participante 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_participantes",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-2)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // nombre_participante ::= NOMBRE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("nombre_participante",13, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // nombre_participante ::= nombre_participante NOMBRE 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("nombre_participante",13, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // participante ::= PARTICIPANTE nombre_participante GUION EMAIL PRONOSTICOS_PARTIDOS pronosticos 
+          case 17: // participantes ::= participantes participante 
             {
               Object RESULT =null;
 		
-        // (guardar un participante)
-    
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("participante",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-5)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+                    List<Participante> lista2 = (List<Participante>)$1;
+                    lista2.add((Participante)$2);
+                    participantes = lista2;
+                    RESULT = lista2;
+                 
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // pronosticos ::= pronostico 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronosticos",14, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // pronosticos ::= pronosticos pronostico 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronosticos",14, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // pronostico ::= NUMERO DOSPUNTOS equipo NUMERO GUION equipo NUMERO 
+          case 18: // participante ::= SEPARADOR PARTICIPANTE nombre_compuesto GUION EMAIL PRONOSTICOS_PARTIDOS pronosticos 
             {
               Object RESULT =null;
 		
-            // (pronóstico simple)
-        
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronostico",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+                    String nombre = (String)$3;
+                    String email = (String)$5;
+
+                    Participante participante = new Participante(nombre, email);
+
+                    List<PronosticoPartido> lista = (List<PronosticoPartido>)$7;
+                    for (PronosticoPartido pr : lista)
+                        participante.addPronostico(pr);
+
+                    System.out.println(">>> Participante cargado: " + nombre + " (" + email + ") con " + lista.size() + " pronósticos.");
+                    RESULT = participante;
+                  
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("participante",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // pronostico ::= NUMERO DOSPUNTOS DOBLE equipo NUMERO GUION equipo NUMERO 
+          case 19: // pronosticos ::= pronostico 
             {
               Object RESULT =null;
 		
-            // (pronóstico con doble)
-        
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronostico",15, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+                    List<PronosticoPartido> lista1 = new ArrayList<>();
+                    lista1.add((PronosticoPartido)$1);
+                    RESULT = lista1;
+               
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronosticos",11, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 20: // pronosticos ::= pronosticos pronostico 
+            {
+              Object RESULT =null;
+		
+                    List<PronosticoPartido> lista2 = (List<PronosticoPartido>)$1;
+                    lista2.add((PronosticoPartido)$2);
+                    RESULT = lista2;
+               
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronosticos",11, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 21: // pronostico ::= NUMERO DOSPUNTOS equipo NUMERO GUION equipo NUMERO 
+            {
+              Object RESULT =null;
+		
+                    int num = (Integer)$1;
+
+                    String equipoLocal = (String)$3;
+                    int golesEquipoLocal = (Integer)$4;
+                    String equipoVisitante = (String)$6;
+                    int golesEquipoVisitante = (Integer)$7;
+
+                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, false);
+                
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronostico",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+            }
+          return CUP$parser$result;
+
+          /*. . . . . . . . . . . . . . . . . . . .*/
+          case 22: // pronostico ::= NUMERO DOSPUNTOS DOBLE equipo NUMERO GUION equipo NUMERO 
+            {
+              Object RESULT =null;
+		
+                    int num = (Integer)$1;
+
+                    String equipoLocal = (String)$4;
+                    int golesEquipoLocal = (Integer)$5;
+                    String equipoVisitante = (String)$7;
+                    int golesEquipoVisitante = (Integer)$8;
+
+                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, true);
+                
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("pronostico",12, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-7)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 

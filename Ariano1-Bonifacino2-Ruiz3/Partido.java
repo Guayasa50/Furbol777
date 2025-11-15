@@ -1,7 +1,7 @@
-package Clases;
-
-public class PronosticoPartido {
-    public int numeroPartido;
+public class Partido {
+    public int numero;
+    public String fecha;
+    public String estadio;
 
     public String equipoLocal;
     public String equipoVisitante;
@@ -9,20 +9,17 @@ public class PronosticoPartido {
     public int golesLocal;
     public int golesVisitante;
 
-    public boolean esDoble;
-
-    public PronosticoPartido(
-            int numeroPartido,
+    public Partido(
+            int numero, String fecha, String estadio,
             String eqLoc, int gLoc,
-            String eqVis, int gVis,
-            boolean esDoble
+            String eqVis, int gVis
     ) {
-        this.numeroPartido = numeroPartido;
+        this.numero = numero;
+        this.fecha = fecha;
+        this.estadio = estadio;
         this.equipoLocal = eqLoc;
         this.golesLocal = gLoc;
         this.equipoVisitante = eqVis;
         this.golesVisitante = gVis;
-        this.esDoble = esDoble;
     }
 }
-
