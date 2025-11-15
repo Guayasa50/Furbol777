@@ -92,6 +92,3 @@ Ejecutar el programa
 bash
 Copiar código
 java -cp ".;java-cup-11b-runtime.jar" Main pronosticos.txt
-👤 Autor
-Proyecto realizado por [tu nombre], como parte de los trabajos prácticos de
-Programación II – Universidad de Montevideo.
