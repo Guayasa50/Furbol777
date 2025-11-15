@@ -1,0 +1,206 @@
+import java_cup.runtime.*;
+import java.util.*;
+
+// ==========================
+// CÓDIGO DEL PARSER
+// ==========================
+
+parser code {:
+    // (bloque global, dejalo vacío por ahora)
+:};
+
+// ==========================
+// TOKENS DEL LEXER
+// ==========================
+
+// Palabras clave
+terminal CAMPEONATO, FIXTURE, SERIE, EQUIPOS;
+terminal PARTIDO_NRO, PARTICIPANTE, PRONOSTICOS_PARTIDOS;
+
+// Símbolos
+terminal CORCHETE_ABRE, CORCHETE_CIERRE;
+terminal COMA, DOSPUNTOS, GUION, SEPARADOR, DOBLE;
+
+// Datos
+terminal Integer NUMERO;
+terminal String FECHA, EMAIL, ESTADIO, NOMBRE;
+
+// ==========================
+// NO TERMINALES
+// ==========================
+
+non terminal Object inicio;
+
+non terminal Object campeonato;
+non terminal Object fixture;
+
+non terminal Object series;
+non terminal Object serie;
+non terminal Object serie_nombre;
+
+non terminal Object lista_equipos;
+non terminal Object equipo;
+
+non terminal Object partidos;
+non terminal Object partido;
+
+non terminal Object participantes;
+non terminal Object lista_participantes;
+non terminal Object participante;
+
+non terminal Object nombre_participante;
+
+non terminal Object pronosticos;
+non terminal Object pronostico;
+
+// ==========================
+// SÍMBOLO INICIAL
+// ==========================
+
+start with inicio;
+
+// ==========================
+// GRAMÁTICA
+// ==========================
+
+// --------------------------
+// PROGRAMA COMPLETO
+// --------------------------
+inicio ::=
+    campeonato
+    fixture
+    series
+    participantes
+    {:
+        // (acciones iniciales)
+    :}
+;
+
+// --------------------------
+// CAMPEONATO
+// --------------------------
+campeonato ::=
+    CAMPEONATO nombre_participante NUMERO
+    {:
+        // (guardar campeonato)
+    :}
+;
+
+// --------------------------
+// FIXTURE
+// --------------------------
+fixture ::=
+    FIXTURE
+    {:
+        // (acciones fixture)
+    :}
+;
+
+// --------------------------
+// SERIES
+// --------------------------
+series ::=
+      serie
+    | series serie
+;
+
+// --------------------------
+// SERIE
+// --------------------------
+serie ::=
+    SERIE serie_nombre
+    EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE
+    partidos
+    {:
+        // (guardar serie)
+    :}
+;
+
+// nombre de serie: 1 o más palabras
+serie_nombre ::=
+      NOMBRE
+    | serie_nombre NOMBRE
+;
+
+// --------------------------
+// EQUIPOS
+// --------------------------
+equipo ::=
+      NOMBRE
+    | equipo NOMBRE
+;
+
+lista_equipos ::=
+      equipo
+    | lista_equipos COMA equipo
+;
+
+// --------------------------
+// PARTIDOS
+// --------------------------
+partidos ::=
+      partido
+    | partidos partido
+;
+
+partido ::=
+    PARTIDO_NRO NUMERO
+    FECHA GUION ESTADIO
+    equipo NUMERO GUION equipo NUMERO
+    {:
+        // (guardar partido)
+    :}
+;
+
+// --------------------------
+// PARTICIPANTES
+// --------------------------
+participantes ::=
+    SEPARADOR lista_participantes SEPARADOR
+    {:
+        // (guardar lista de participantes)
+    :}
+;
+
+lista_participantes ::=
+      participante
+    | lista_participantes SEPARADOR participante
+;
+
+// nombre del participante (varias palabras)
+nombre_participante ::=
+      NOMBRE
+    | nombre_participante NOMBRE
+;
+
+// --------------------------
+// PARTICIPANTE
+// --------------------------
+participante ::=
+    PARTICIPANTE nombre_participante
+    GUION EMAIL
+    PRONOSTICOS_PARTIDOS
+    pronosticos
+    {:
+        // (guardar un participante)
+    :}
+;
+
+// --------------------------
+// PRONÓSTICOS
+// --------------------------
+pronosticos ::=
+      pronostico
+    | pronosticos pronostico
+;
+
+pronostico ::=
+      NUMERO DOSPUNTOS equipo NUMERO GUION equipo NUMERO
+        {:
+            // (pronóstico simple)
+        :}
+    | NUMERO DOSPUNTOS DOBLE equipo NUMERO GUION equipo NUMERO
+        {:
+            // (pronóstico con doble)
+        :}
+;
