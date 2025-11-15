@@ -42,20 +42,20 @@ non terminal Object inicio;
 non terminal Object campeonato;
 non terminal Object fixture;
 
-non terminal Object series;
-non terminal Object serie;
+non terminal List<Serie> series;
+non terminal Serie serie;
 
-non terminal Object lista_equipos;
-non terminal Object equipo;
+non terminal List<String> lista_equipos;
+non terminal String equipo;
 
-non terminal Object partidos;
-non terminal Object partido;
+non terminal List<Partido> partidos;
+non terminal Partido partido;
 
-non terminal Object participantes;
-non terminal Object participante;
+non terminal List<Participante> participantes;
+non terminal Participante participante;
 
-non terminal Object pronosticos;
-non terminal Object pronostico;
+non terminal List<PronosticoPartido> pronosticos;
+non terminal PronosticoPartido pronostico;
 
 non terminal String nombre_compuesto;
 
@@ -147,6 +147,7 @@ serie ::= SERIE nombre_compuesto:nombre
           :}
 ;
 
+
 // --------------------------
 // EQUIPOS
 // --------------------------
@@ -190,11 +191,10 @@ partidos ::= partido:p
              :}
 ;
 
-
-partido ::= PARTIDO_NRO _
+partido ::= PARTIDO_NRO
             NUMERO:num
-            FECHA:fecha GUION _ ESTADIO:est
-            equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
+            FECHA:fecha GUION ESTADIO:est
+            equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
             {:
                 int n = num;
                 String f = fecha;
@@ -233,14 +233,15 @@ participantes ::= participante:p
                  :}
 ;
 
+
 // --------------------------
 // PARTICIPANTE
 // --------------------------
 participante ::= SEPARADOR
-                  PARTICIPANTE _
+                  PARTICIPANTE
                   nombre_compuesto:nombre
                   GUION EMAIL:email
-                  PRONOSTICOS_PARTIDOS _
+                  PRONOSTICOS_PARTIDOS
                   pronosticos:lista
                   {:
                     String nom = nombre;
@@ -277,8 +278,8 @@ pronosticos ::= pronostico:p
 
 
 // normal
-pronostico ::= NUMERO:num DOSPUNTOS _
-                equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
+pronostico ::= NUMERO:num DOSPUNTOS
+                equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
                 {:
                     int n = num;
 
@@ -290,8 +291,8 @@ pronostico ::= NUMERO:num DOSPUNTOS _
                     RESULT = new PronosticoPartido(n, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, false);
                 :}
              // Para pronostico doble
-             | NUMERO:num DOSPUNTOS _ DOBLE _
-                equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
+             | NUMERO:num DOSPUNTOS DOBLE
+                equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
                 {:
                     int n = num;
 

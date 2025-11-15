@@ -97,9 +97,8 @@ Pronosticos Partidos:
 Participante: Yosepo Coinada - y.coinada@yahoo.com
 Pronosticos Partidos:
 1: Japón 1 - Qatar 2
-2:(X) Japón 0 - Alemania 2
-30:(X) México 1 - Argentina 2
+2: (X) Japón 0 - Alemania 2
+30: (X) México 1 - Argentina 2
 32: México 2 - Senegal 0
 40: España 1 - Italia 0
-53:(X) Canadá 1 - Ghana 1
-*-*-*-*-*-*-*-*-*-*-
+53: (X) Canadá 1 - Ghana 1
