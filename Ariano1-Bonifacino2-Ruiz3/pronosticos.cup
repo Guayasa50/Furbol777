@@ -6,8 +6,16 @@ import java.util.*;
 // ==========================
 
 parser code {:
-    // (bloque global, dejalo vacío por ahora)
+    //Crear Campeonato
+    //Aca van variables globales (se pueden acceder desde cualquier parte del codigo)
+    Campeonato campeonatoActual = null;
+    Serie serieActual = null;
+
+    Map<Integer, Partido> partidosPorNumero = new HashMap<>();
+
+    List<Participante> participantes = new ArrayList<>();
 :};
+
 
 // ==========================
 // TOKENS DEL LEXER
@@ -79,12 +87,15 @@ inicio ::=
 // --------------------------
 // CAMPEONATO
 // --------------------------
-campeonato ::=
-    CAMPEONATO nombre_participante NUMERO
-    {:
-        // (guardar campeonato)
-    :}
+campeonato ::= CAMPEONATO nombre_compuesto NUMERO
+               {:
+                    //Creamos el objeto de campeonato
+                    String nombre = (String)$2; // $2 es el valor de nombre_compuesto (un String que da el lexer), el 2 es porque es el segunod valor que aparece.
+                    int anio = (Integer)$3;     // $3 es el valor del token NUMERO (un Integer que da el lexer), el 3 es porque es el tercero valor que aparece.
+                    campeonatoActual = new Campeonato(nombre, anio);
+               :}
 ;
+
 
 // --------------------------
 // FIXTURE
@@ -107,14 +118,26 @@ series ::=
 // --------------------------
 // SERIE
 // --------------------------
-serie ::=
-    SERIE serie_nombre
-    EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE
-    partidos
-    {:
-        // (guardar serie)
-    :}
+serie ::= SERIE nombre_compuesto
+          EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE
+          partidos
+          {:
+                //Creamos el objeto de seriie
+                String nombre = (String)$2;
+                serieActual = new Serie(nombre);
+
+                // Agregamos los equipos cargados previamente
+                List<String> equipos = (List<String>)$5;
+                for (String equipo : equipos) serieActual.addEquipo(equipo);
+
+                // Agregamos los partidos ya cargados
+                List<Partido> partidos = (List<Partido>)$7;
+                for (Partido partido : partidos) serieActual.addPartido(partido);
+
+                campeonatoActual.agregarSerie(serieActual);
+          :}
 ;
+
 
 // nombre de serie: 1 o más palabras
 serie_nombre ::=
@@ -130,37 +153,80 @@ equipo ::=
     | equipo NOMBRE
 ;
 
-lista_equipos ::=
-      equipo
-    | lista_equipos COMA equipo
+lista_equipos ::= equipo
+                 {:
+                     List<String> lista1 = new ArrayList<>();
+                     lista1.add((String)$1);
+                     RESULT = lista1;
+                 :}
+               | lista_equipos COMA equipo
+                 {:
+                     List<String> lista2 = (List<String>)$1;
+                     lista2.add((String)$3);
+                     RESULT = lista2;
+                 :}
 ;
+
 
 // --------------------------
 // PARTIDOS
 // --------------------------
-partidos ::=
-      partido
-    | partidos partido
+partidos ::= partido
+             {:
+                List<Partido> lista1 = new ArrayList<>();
+                lista1.add((Partido)$1);
+                RESULT = lista1;
+             :}
+           | partidos partido
+             {:
+                List<Partido> lista2 = (List<Partido>)$1;
+                lista2.add((Partido)$2);
+                RESULT = lista2;
+             :}
 ;
 
-partido ::=
-    PARTIDO_NRO NUMERO
-    FECHA GUION ESTADIO
-    equipo NUMERO GUION equipo NUMERO
-    {:
-        // (guardar partido)
-    :}
+
+partido ::= PARTIDO_NRO NUMERO
+            FECHA GUION ESTADIO
+            equipo NUMERO GUION equipo NUMERO
+            {:
+                int num = (Integer)$2;
+                String fecha = (String)$3;
+                String estadio = (String)$5;
+
+                String equipoLocal = (String)$6;
+                int golesEquipoLocal = (Integer)$7;
+                String equipoVisitante = (String)$9;
+                int golesEquipoVisitante = (Integer)$10;
+
+                Partido p = new Partido(num, fecha, estadio, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante);
+
+                partidosPorNumero.put(num, p); //Esteto es para guardar en el Hash del parser el objeto partido identificado por su numero (para acceder a el despuews por esa clave)
+
+                RESULT = p;
+            :}
 ;
+
 
 // --------------------------
 // PARTICIPANTES
 // --------------------------
-participantes ::=
-    SEPARADOR lista_participantes SEPARADOR
-    {:
-        // (guardar lista de participantes)
-    :}
+participantes ::= participante
+                 {:
+                    List<Participante> lista1 = new ArrayList<>();
+                    lista1.add((Participante)$1);
+                    participantes = lista1;
+                    RESULT = lista1;
+                 :}
+               | participantes participante
+                 {:
+                    List<Participante> lista2 = (List<Participante>)$1;
+                    lista2.add((Participante)$2);
+                    participantes = lista2;
+                    RESULT = lista2;
+                 :}
 ;
+
 
 lista_participantes ::=
       participante
@@ -176,31 +242,67 @@ nombre_participante ::=
 // --------------------------
 // PARTICIPANTE
 // --------------------------
-participante ::=
-    PARTICIPANTE nombre_participante
-    GUION EMAIL
-    PRONOSTICOS_PARTIDOS
-    pronosticos
-    {:
-        // (guardar un participante)
-    :}
+participante ::= SEPARADOR
+                  PARTICIPANTE nombre_compuesto
+                  GUION EMAIL
+                  PRONOSTICOS_PARTIDOS pronosticos
+                  {:
+                    String nombre = (String)$3;
+                    String email = (String)$5;
+
+                    Participante participante = new Participante(nombre, email);
+
+                    List<PronosticoPartido> lista = (List<PronosticoPartido>)$7;
+                    for (PronosticoPartido pr : lista)
+                        participante.addPronostico(pr);
+
+                    RESULT = participante;
+                  :}
 ;
+
 
 // --------------------------
 // PRONÓSTICOS
 // --------------------------
-pronosticos ::=
-      pronostico
-    | pronosticos pronostico
+pronosticos ::= pronostico
+               {:
+                    List<PronosticoPartido> lista1 = new ArrayList<>();
+                    lista1.add((PronosticoPartido)$1);
+                    RESULT = lista1;
+               :}
+             | pronosticos pronostico
+               {:
+                    List<PronosticoPartido> lista2 = (List<PronosticoPartido>)$1;
+                    lista2.add((PronosticoPartido)$2);
+                    RESULT = lista2;
+               :}
 ;
 
-pronostico ::=
-      NUMERO DOSPUNTOS equipo NUMERO GUION equipo NUMERO
-        {:
-            // (pronóstico simple)
-        :}
-    | NUMERO DOSPUNTOS DOBLE equipo NUMERO GUION equipo NUMERO
-        {:
-            // (pronóstico con doble)
-        :}
+
+// normal
+pronostico ::= NUMERO DOSPUNTOS
+                equipo NUMERO GUION equipo NUMERO
+                {:
+                    int num = (Integer)$1;
+
+                    String equipoLocal = (String)$3;
+                    int golesEquipoLocal = (Integer)$4;
+                    String equipoVisitante = (String)$6;
+                    int golesEquipoVisitante = (Integer)$7;
+
+                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, false);
+                :}
+             // Para pronostico doble
+             | NUMERO DOSPUNTOS DOBLE
+                equipo NUMERO GUION equipo NUMERO
+                {:
+                    int num = (Integer)$1;
+
+                    String equipoLocal = (String)$4;
+                    int golesEquipoLocal = (Integer)$5;
+                    String equipoVisitante = (String)$7;
+                    int golesEquipoVisitante = (Integer)$8;
+
+                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, true);
+                :}
 ;
