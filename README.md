@@ -25,7 +25,7 @@ Copiar código
 
 En caso contrario, marca errores indicando en qué parte del archivo hay un problema.
 
-Este proyecto es parte del trabajo práctico de Programación II, donde se utiliza:
+Este proyecto es parte del trabajo práctico de Teoría de la computación, donde se utiliza:
 
 - **JFlex** para generar el analizador léxico (qué palabras reconoce el sistema).
 - **CUP** para generar el analizador sintáctico (cómo se organiza el archivo y qué estructura debe tener).
