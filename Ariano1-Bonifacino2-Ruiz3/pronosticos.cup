@@ -85,22 +85,23 @@ inicio ::=
 // --------------------------
 // CAMPEONATO
 // --------------------------
-campeonato ::= CAMPEONATO nombre_compuesto NUMERO
+campeonato ::= CAMPEONATO nombre_compuesto:nombre NUMERO:anio
                {:
                     //Creamos el objeto de campeonato
-                    String nombre = (String)$2; // $2 es el valor de nombre_compuesto (un String que da el lexer), el 2 es porque es el segunod valor que aparece.
-                    int anio = (Integer)$3;     // $3 es el valor del token NUMERO (un Integer que da el lexer), el 3 es porque es el tercero valor que aparece.
-                    campeonatoActual = new Campeonato(nombre, anio);
+                    String n = nombre;
+                    int a = anio;
 
-                    System.out.println(">>> Campeonato cargado: " + nombre + " (" + anio + ")");
+                    campeonatoActual = new Campeonato(n, a);
+
+                    System.out.println(">>> Campeonato cargado: " + n + " (" + a + ")");
                :}
 ;
 
 nombre_compuesto ::=
-      NOMBRE
-        {: RESULT = (String)$1; :}
-    | nombre_compuesto NOMBRE
-        {: RESULT = ((String)$1) + " " + (String)$2; :}
+      NOMBRE:n
+        {: RESULT = n; :}
+    | nombre_compuesto:prev NOMBRE:n
+        {: RESULT = prev + " " + n; :}
 ;
 
 
@@ -125,24 +126,24 @@ series ::=
 // --------------------------
 // SERIE
 // --------------------------
-serie ::= SERIE nombre_compuesto
-          EQUIPOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRE
-          partidos
+serie ::= SERIE nombre_compuesto:nombre
+          EQUIPOS CORCHETE_ABRE lista_equipos:equips CORCHETE_CIERRE
+          partidos:partList
           {:
                 //Creamos el objeto de seriie
-                String nombre = (String)$2;
-                serieActual = new Serie(nombre);
+                String nom = nombre;
+                serieActual = new Serie(nom);
 
                 // Agregamos los equipos cargados previamente
-                List<String> equipos = (List<String>)$5;
-                for (String equipo : equipos) serieActual.addEquipo(equipo);
+                List<String> equipos = equips;
+                for (String e : equipos) serieActual.addEquipo(e);
 
                 // Agregamos los partidos ya cargados
-                List<Partido> partidos = (List<Partido>)$7;
-                for (Partido partido : partidos) serieActual.addPartido(partido);
+                List<Partido> partidos = partList;
+                for (Partido p : partidos) serieActual.addPartido(p);
 
                 campeonatoActual.agregarSerie(serieActual);
-                System.out.println(">>> Serie cargada: " + nombre + " con " + equipos.size() + " equipos y " + partidos.size() + " partidos.");
+                System.out.println(">>> Serie cargada: " + nom + " con " + equipos.size() + " equipos y " + partidos.size() + " partidos.");
           :}
 ;
 
@@ -150,23 +151,23 @@ serie ::= SERIE nombre_compuesto
 // EQUIPOS
 // --------------------------
 equipo ::=
-      NOMBRE
-        {: RESULT = (String)$1; :}
-    | equipo NOMBRE
-        {: RESULT = ((String)$1) + " " + (String)$2; :}
+      NOMBRE:n
+        {: RESULT = n; :}
+    | equipo:prev NOMBRE:n
+        {: RESULT = prev + " " + n; :}
 ;
 
 
-lista_equipos ::= equipo
+lista_equipos ::= equipo:elem
                  {:
                      List<String> lista1 = new ArrayList<>();
-                     lista1.add((String)$1);
+                     lista1.add(elem);
                      RESULT = lista1;
                  :}
-               | lista_equipos COMA equipo
+               | lista_equipos:lst COMA equipo:elem
                  {:
-                     List<String> lista2 = (List<String>)$1;
-                     lista2.add((String)$3);
+                     List<String> lista2 = lst;
+                     lista2.add(elem);
                      RESULT = lista2;
                  :}
 ;
@@ -175,37 +176,38 @@ lista_equipos ::= equipo
 // --------------------------
 // PARTIDOS
 // --------------------------
-partidos ::= partido
+partidos ::= partido:p
              {:
                 List<Partido> lista1 = new ArrayList<>();
-                lista1.add((Partido)$1);
+                lista1.add(p);
                 RESULT = lista1;
              :}
-           | partidos partido
+           | partidos:lst partido:p
              {:
-                List<Partido> lista2 = (List<Partido>)$1;
-                lista2.add((Partido)$2);
+                List<Partido> lista2 = lst;
+                lista2.add(p);
                 RESULT = lista2;
              :}
 ;
 
 
-partido ::= PARTIDO_NRO NUMERO
-            FECHA GUION ESTADIO
-            equipo NUMERO GUION equipo NUMERO
+partido ::= PARTIDO_NRO _
+            NUMERO:num
+            FECHA:fecha GUION _ ESTADIO:est
+            equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
             {:
-                int num = (Integer)$2;
-                String fecha = (String)$3;
-                String estadio = (String)$5;
+                int n = num;
+                String f = fecha;
+                String e = est;
 
-                String equipoLocal = (String)$6;
-                int golesEquipoLocal = (Integer)$7;
-                String equipoVisitante = (String)$9;
-                int golesEquipoVisitante = (Integer)$10;
+                String equipoLocal = local;
+                int golesEquipoLocal = gL;
+                String equipoVisitante = visitante;
+                int golesEquipoVisitante = gV;
 
-                Partido p = new Partido(num, fecha, estadio, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante);
+                Partido p = new Partido(n, f, e, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante);
 
-                partidosPorNumero.put(num, p); //Esteto es para guardar en el Hash del parser el objeto partido identificado por su numero (para acceder a el despuews por esa clave)
+                partidosPorNumero.put(n, p);
 
                 RESULT = p;
             :}
@@ -215,17 +217,17 @@ partido ::= PARTIDO_NRO NUMERO
 // --------------------------
 // PARTICIPANTES
 // --------------------------
-participantes ::= participante
+participantes ::= participante:p
                  {:
                     List<Participante> lista1 = new ArrayList<>();
-                    lista1.add((Participante)$1);
+                    lista1.add(p);
                     participantes = lista1;
                     RESULT = lista1;
                  :}
-               | participantes participante
+               | participantes:lst participante:p
                  {:
-                    List<Participante> lista2 = (List<Participante>)$1;
-                    lista2.add((Participante)$2);
+                    List<Participante> lista2 = lst;
+                    lista2.add(p);
                     participantes = lista2;
                     RESULT = lista2;
                  :}
@@ -235,20 +237,22 @@ participantes ::= participante
 // PARTICIPANTE
 // --------------------------
 participante ::= SEPARADOR
-                  PARTICIPANTE nombre_compuesto
-                  GUION EMAIL
-                  PRONOSTICOS_PARTIDOS pronosticos
+                  PARTICIPANTE _
+                  nombre_compuesto:nombre
+                  GUION EMAIL:email
+                  PRONOSTICOS_PARTIDOS _
+                  pronosticos:lista
                   {:
-                    String nombre = (String)$3;
-                    String email = (String)$5;
+                    String nom = nombre;
+                    String mail = email;
 
-                    Participante participante = new Participante(nombre, email);
+                    Participante participante = new Participante(nom, mail);
 
-                    List<PronosticoPartido> lista = (List<PronosticoPartido>)$7;
-                    for (PronosticoPartido pr : lista)
+                    List<PronosticoPartido> l = lista;
+                    for (PronosticoPartido pr : l)
                         participante.addPronostico(pr);
 
-                    System.out.println(">>> Participante cargado: " + nombre + " (" + email + ") con " + lista.size() + " pronósticos.");
+                    System.out.println(">>> Participante cargado: " + nom + " (" + mail + ") con " + l.size() + " pronósticos.");
                     RESULT = participante;
                   :}
 ;
@@ -257,45 +261,45 @@ participante ::= SEPARADOR
 // --------------------------
 // PRONÓSTICOS
 // --------------------------
-pronosticos ::= pronostico
+pronosticos ::= pronostico:p
                {:
                     List<PronosticoPartido> lista1 = new ArrayList<>();
-                    lista1.add((PronosticoPartido)$1);
+                    lista1.add(p);
                     RESULT = lista1;
                :}
-             | pronosticos pronostico
+             | pronosticos:lst pronostico:p
                {:
-                    List<PronosticoPartido> lista2 = (List<PronosticoPartido>)$1;
-                    lista2.add((PronosticoPartido)$2);
+                    List<PronosticoPartido> lista2 = lst;
+                    lista2.add(p);
                     RESULT = lista2;
                :}
 ;
 
 
 // normal
-pronostico ::= NUMERO DOSPUNTOS
-                equipo NUMERO GUION equipo NUMERO
+pronostico ::= NUMERO:num DOSPUNTOS _
+                equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
                 {:
-                    int num = (Integer)$1;
+                    int n = num;
 
-                    String equipoLocal = (String)$3;
-                    int golesEquipoLocal = (Integer)$4;
-                    String equipoVisitante = (String)$6;
-                    int golesEquipoVisitante = (Integer)$7;
+                    String equipoLocal = local;
+                    int golesEquipoLocal = gL;
+                    String equipoVisitante = visitante;
+                    int golesEquipoVisitante = gV;
 
-                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, false);
+                    RESULT = new PronosticoPartido(n, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, false);
                 :}
              // Para pronostico doble
-             | NUMERO DOSPUNTOS DOBLE
-                equipo NUMERO GUION equipo NUMERO
+             | NUMERO:num DOSPUNTOS _ DOBLE _
+                equipo:local NUMERO:gL GUION _ equipo:visitante NUMERO:gV
                 {:
-                    int num = (Integer)$1;
+                    int n = num;
 
-                    String equipoLocal = (String)$4;
-                    int golesEquipoLocal = (Integer)$5;
-                    String equipoVisitante = (String)$7;
-                    int golesEquipoVisitante = (Integer)$8;
+                    String equipoLocal = local;
+                    int golesEquipoLocal = gL;
+                    String equipoVisitante = visitante;
+                    int golesEquipoVisitante = gV;
 
-                    RESULT = new PronosticoPartido(num, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, true);
+                    RESULT = new PronosticoPartido(n, equipoLocal, golesEquipoLocal, equipoVisitante, golesEquipoVisitante, true);
                 :}
 ;
