@@ -62,12 +62,14 @@ blancos = ({LineTerminator} | {WhiteSpace})+
 numero = {Digito}+
 
 // (5) Fecha válida (Formatos): (OPCIONAL C)
-fecha =
-      {Dia}\/{Mes}\/{Anio}         // DD/MM/YYYY
-    | {Dia}\-{Mes}\-{Anio}         // DD-MM-YYYY
-    | {Dia}\.{Mes}\.{Anio}         // DD.MM.YYYY
-    | {Dia}\-{MesTexto}\-{Anio}    // 20-Ago-2026
-    | {Dia}\ {MesTexto}\ {Anio}    // 20 Ago 2026
+fecha = {Anio}\/{Mes}\/{Dia}  // YYYY/MM/DD
+| {Dia}\/{Mes}\/{Anio}        // DD/MM/YYYY
+| {Mes}\/{Dia}\/{Anio}        // MM/DD/YYYY
+| {Anio}\-{Mes}\-{Dia}        // YYYY-MM-DD
+| {Dia}\.{Mes}\.{Anio}        // DD.MM.YYYY
+| {Dia}\-{MesTexto}\-{Anio}   // 20-Ago-2026
+| {Dia}\ {MesTexto}\ {Anio}   // 20 Ago 2026
+| {MesTexto}\ {Dia}\,{Anio}   // Ago 20, 2026
 
 // (6) Email (EJ): juan@gmail.com
 email = ({Letra}|{Digito}|[._-])+@({Letra}|{Digito})+(\.[a-zA-Z]{2,4})+
