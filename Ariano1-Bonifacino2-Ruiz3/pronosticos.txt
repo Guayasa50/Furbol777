@@ -85,15 +85,6 @@ Partido Nro: 55
 Ghana 2 - Irán 0
 
 *-*-*-*-*-*-*-*-*-*-
-Participante: Pepe Repepe - pepe@mail.com
-Pronosticos Partidos:
-1: Japón 1 - Qatar 2
-2: Japón 0 - Alemania 2
-30: México 1 - Argentina 2
-32: México 2 - Senegal 1
-40: España 2 - Italia 1
-51: Inglaterra 1 - Ghana 0
-*-*-*-*-*-*-*-*-*-*-
 Participante: Yosepo Coinada - y.coinada@yahoo.com
 Pronosticos Partidos:
 1: Japón 1 - Qatar 2
@@ -102,3 +93,12 @@ Pronosticos Partidos:
 32: México 2 - Senegal 0
 40: España 1 - Italia 0
 53: (X) Canadá 1 - Ghana 1
+*-*-*-*-*-*-*-*-*-*-
+Participante: Pepe Repepe - pepe@mail.com
+Pronosticos Partidos:
+1: Japón 1 - Qatar 2
+2: (X) Japón 0 - Alemania 2
+30: México 1 - Argentina 2
+32: México 2 - Senegal 1
+40: España 2 - Italia 1
+51: Inglaterra 1 - Ghana 0

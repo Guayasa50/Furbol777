@@ -11,4 +11,3 @@ javac -cp ".;java-cup-11b-runtime.jar" *.java
 java -cp ".;java-cup-11b-runtime.jar" Main pronosticos.txt
 
 dir /s pronosticos.cup
-

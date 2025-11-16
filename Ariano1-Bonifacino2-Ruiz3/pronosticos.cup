@@ -143,7 +143,10 @@ inicio ::=
         // ===== IMPRIMIR PARTICIPANTES Y SUS PRONÓSTICOS =====
         System.out.println("\n=== PARTICIPANTES ===");
         for (Participante part : participantes) {
-
+            if (part == null) {
+                System.err.println("ERROR: Participante NULL encontrado en lista_participantes");
+                continue;
+            }
             System.out.println("\n---------------------------------------");
             System.out.println("Participante: " + part.getNombre() +
                                " (" + part.getEmail() + ")");
@@ -411,7 +414,7 @@ participante ::= SEPARADOR
                     }
 
                     // Guardar participante en la lista global
-                    participantes.add(participante);
+                    RESULT = participante;
 
                     // UN participante no puede tener mas de 4 marcas
                     if (participante.getDobles() > 4) {
