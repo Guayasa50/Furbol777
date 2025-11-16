@@ -45,7 +45,7 @@ Portugal 1 - Senegal 1
 SERIE GrupoC
 Equipos: [España, Italia, Croacia, Bélgica]
 Partido Nro: 40
-2026/07/10 - "Estadio Maracaná"
+2026/02/11 - "Estadio Maracaná"
 España 2 - Italia 1
 Partido Nro: 41
 2026/07/10 - "Estadio Maracaná"

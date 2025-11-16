@@ -50,6 +50,8 @@ WhiteSpace = [ \t\f]
 Anio = [0-9]{4} // 4 numeros entre 0 y 9
 
 Mes = 0[1-9]|1[0-2] // Un número de 01 a 12
+MesTexto = Ene|Feb|Mar|Abr|May|Jun|Jul|Ago|Sep|Oct|Nov|Dic
+           |Enero|Febrero|Marzo|Abril|Mayo|Junio|Julio|Agosto|Septiembre|Octubre|Noviembre|Diciembre
 
 Dia = 0[1-9]|[1][0-9]|[2][0-9]|30|31 // Un número de 01 a 31
 
@@ -59,8 +61,15 @@ blancos = ({LineTerminator} | {WhiteSpace})+
 // (4) Número: n cantidad de dígitos concatenados (n>=1)
 numero = {Digito}+
 
-// (5) Fecha válida (Formatos): YYYY/MM/DD , DD/MM/YYYY , MM/DD/YYYY , YYYY-MM-DD , DD.MM.YYYY 
-fecha = {Anio}\/{Mes}\/{Dia} | {Dia}\/{Mes}\/{Anio} | {Mes}\/{Dia}\/{Anio} | {Anio}\-{Mes}\-{Dia} | {Dia}\.{Mes}\.{Anio}
+// (5) Fecha válida (Formatos): (OPCIONAL C)
+fecha = {Anio}\/{Mes}\/{Dia}  // YYYY/MM/DD
+| {Dia}\/{Mes}\/{Anio}        // DD/MM/YYYY
+| {Mes}\/{Dia}\/{Anio}        // MM/DD/YYYY
+| {Anio}\-{Mes}\-{Dia}        // YYYY-MM-DD
+| {Dia}\.{Mes}\.{Anio}        // DD.MM.YYYY
+| {Dia}\-{MesTexto}\-{Anio}   // 20-Ago-2026
+| {Dia}\ {MesTexto}\ {Anio}   // 20 Ago 2026
+| {MesTexto}\ {Dia}\,{Anio}   // Ago 20, 2026
 
 // (6) Email (EJ): juan@gmail.com
 email = ({Letra}|{Digito}|[._-])+@({Letra}|{Digito})+(\.[a-zA-Z]{2,4})+

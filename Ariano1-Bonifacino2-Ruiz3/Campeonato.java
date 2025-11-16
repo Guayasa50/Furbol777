@@ -7,6 +7,8 @@ public class Campeonato {
 
     public List<Serie> series = new ArrayList<>();
 
+    private int maxDobles = 4; // valor por defecto
+
     public Campeonato(String nombre, int anio) {
         this.nombre = nombre;
         this.anio = anio;
@@ -39,4 +41,9 @@ public class Campeonato {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+
+    public int getMaxDobles() {return maxDobles;}
+
+    public void setMaxDobles(int maxDobles) {this.maxDobles = maxDobles;}
+
 }
