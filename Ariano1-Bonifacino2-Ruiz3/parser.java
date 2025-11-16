@@ -51,7 +51,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\ufffe\026\ufffe\001\002\000\006\022\012\026\013\001\002" +
     "\000\004\005\uffff\001\002\000\012\007\ufffd\017\ufffd\022" +
     "\ufffd\026\ufffd\001\002\000\004\006\ufffc\001\002\000\004" +
-    "\006\020\001\002\000\006\006\020\020\050\001\002\000" +
+    "\006\020\001\002\000\006\006\020\020\051\001\002\000" +
     "\006\006\ufffb\020\ufffb\001\002\000\004\026\010\001\002" +
     "\000\006\007\022\026\013\001\002\000\004\013\023\001" +
     "\002\000\004\026\025\001\002\000\006\014\031\015\030" +
@@ -67,21 +67,21 @@ public class parser extends java_cup.runtime.lr_parser {
     "\004\017\044\001\002\000\004\026\025\001\002\000\006" +
     "\022\046\026\027\001\002\000\010\006\ufff2\010\ufff2\020" +
     "\ufff2\001\002\000\010\014\ufff5\015\ufff5\026\027\001\002" +
-    "\000\004\011\055\001\002\000\006\006\ufffa\020\ufffa\001" +
-    "\002\000\006\002\000\020\050\001\002\000\006\002\ufff1" +
-    "\020\ufff1\001\002\000\006\002\ufff0\020\ufff0\001\002\000" +
-    "\004\026\010\001\002\000\006\017\057\026\013\001\002" +
-    "\000\004\024\060\001\002\000\004\012\061\001\002\000" +
-    "\004\022\062\001\002\000\004\016\066\001\002\000\010" +
-    "\002\uffef\020\uffef\022\062\001\002\000\010\002\uffee\020" +
-    "\uffee\022\uffee\001\002\000\010\002\uffed\020\uffed\022\uffed" +
-    "\001\002\000\006\021\067\026\025\001\002\000\004\026" +
-    "\025\001\002\000\006\022\071\026\027\001\002\000\004" +
-    "\017\072\001\002\000\004\026\025\001\002\000\006\022" +
-    "\074\026\027\001\002\000\010\002\uffec\020\uffec\022\uffec" +
-    "\001\002\000\006\022\076\026\027\001\002\000\004\017" +
-    "\077\001\002\000\004\026\025\001\002\000\006\022\101" +
-    "\026\027\001\002\000\010\002\uffeb\020\uffeb\022\uffeb\001" +
+    "\000\006\002\000\020\051\001\002\000\004\011\054\001" +
+    "\002\000\006\006\ufffa\020\ufffa\001\002\000\006\002\ufff1" +
+    "\020\ufff1\001\002\000\004\026\010\001\002\000\006\017" +
+    "\056\026\013\001\002\000\004\024\057\001\002\000\004" +
+    "\012\060\001\002\000\004\022\061\001\002\000\004\016" +
+    "\065\001\002\000\010\002\uffef\020\uffef\022\061\001\002" +
+    "\000\010\002\uffee\020\uffee\022\uffee\001\002\000\010\002" +
+    "\uffed\020\uffed\022\uffed\001\002\000\006\021\066\026\025" +
+    "\001\002\000\004\026\025\001\002\000\006\022\070\026" +
+    "\027\001\002\000\004\017\071\001\002\000\004\026\025" +
+    "\001\002\000\006\022\073\026\027\001\002\000\010\002" +
+    "\uffec\020\uffec\022\uffec\001\002\000\006\022\075\026\027" +
+    "\001\002\000\004\017\076\001\002\000\004\026\025\001" +
+    "\002\000\006\022\100\026\027\001\002\000\010\002\uffeb" +
+    "\020\uffeb\022\uffeb\001\002\000\006\002\ufff0\020\ufff0\001" +
     "\002" });
 
   /** Access to parse-action table. */
@@ -94,7 +94,7 @@ public class parser extends java_cup.runtime.lr_parser {
     "\014\001\001\000\004\017\010\001\001\000\002\001\001" +
     "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
     "\002\001\001\000\002\001\001\000\002\001\001\000\006" +
-    "\005\015\006\016\001\001\000\010\006\050\013\051\014" +
+    "\005\015\006\016\001\001\000\010\006\051\013\047\014" +
     "\052\001\001\000\002\001\001\000\004\017\020\001\001" +
     "\000\002\001\001\000\002\001\001\000\006\007\023\010" +
     "\025\001\001\000\002\001\001\000\002\001\001\000\002" +
@@ -104,15 +104,15 @@ public class parser extends java_cup.runtime.lr_parser {
     "\002\001\001\000\002\001\001\000\002\001\001\000\004" +
     "\010\041\001\001\000\002\001\001\000\002\001\001\000" +
     "\004\010\044\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\014\053\001\001\000\002\001\001\000\002\001\001" +
-    "\000\004\017\055\001\001\000\002\001\001\000\002\001" +
-    "\001\000\002\001\001\000\006\015\062\016\063\001\001" +
-    "\000\002\001\001\000\004\016\064\001\001\000\002\001" +
-    "\001\000\002\001\001\000\004\010\067\001\001\000\004" +
-    "\010\074\001\001\000\002\001\001\000\002\001\001\000" +
-    "\004\010\072\001\001\000\002\001\001\000\002\001\001" +
-    "\000\002\001\001\000\002\001\001\000\004\010\077\001" +
+    "\000\002\001\001\000\004\014\100\001\001\000\002\001" +
+    "\001\000\002\001\001\000\002\001\001\000\004\017\054" +
+    "\001\001\000\002\001\001\000\002\001\001\000\002\001" +
+    "\001\000\006\015\061\016\062\001\001\000\002\001\001" +
+    "\000\004\016\063\001\001\000\002\001\001\000\002\001" +
+    "\001\000\004\010\066\001\001\000\004\010\073\001\001" +
+    "\000\002\001\001\000\002\001\001\000\004\010\071\001" +
+    "\001\000\002\001\001\000\002\001\001\000\002\001\001" +
+    "\000\002\001\001\000\004\010\076\001\001\000\002\001" +
     "\001\000\002\001\001\000\002\001\001" });
 
   /** Access to <code>reduce_goto</code> table. */
@@ -155,6 +155,8 @@ public class parser extends java_cup.runtime.lr_parser {
     //Crear Campeonato
     //Aca van variables globales (se pueden acceder desde cualquier parte del codigo)
     Campeonato campeonatoActual = null;
+
+    //Guarda la ultima serie leída (esto es para cosas como saber cual es la serie de los partidos que se estan leyendo)
     Serie serieActual = null;
 
     Map<Integer, Partido> partidosPorNumero = new HashMap<>();
@@ -201,11 +203,98 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 1: // inicio ::= campeonato fixture series participantes 
+          case 1: // inicio ::= campeonato fixture series lista_participantes 
             {
               Object RESULT =null;
 		
-        System.out.println(">>> Parseo COMPLETO: campeonato, fixture, series y participantes cargados correctamente.");
+        // ===== VALIDAR CANTIDAD TOTAL DE SERIES =====
+        int cant = campeonatoActual.getSeries().size();
+        if (cant != 4 && cant != 8 && cant != 12) {
+            System.err.println(
+                "ERROR: Se encontraron " + cant + " series. Deben ser 4, 8 o 12."
+            );
+        }
+
+        // =====================================================
+        // === PROCESAMIENTO GLOBAL - IMPRESIÓN COMPLETA ======
+        // =====================================================
+
+        System.out.println("\n\n=======================================");
+        System.out.println("     PROCESAMIENTO FINAL DEL ARCHIVO   ");
+        System.out.println("=======================================\n");
+
+        // ===== IMPRIMIR CAMPEONATO =====
+        System.out.println("=== CAMPEONATO ===");
+        System.out.println(campeonatoActual.getNombre() + " " + campeonatoActual.getAnio());
+
+        // ===== IMPRIMIR TODAS LAS SERIES =====
+        System.out.println("\n=== SERIES ===");
+        for (Serie s : campeonatoActual.getSeries()) {
+
+            System.out.println("\n---------------------------------------");
+            System.out.println("Serie: " + s.getNombre());
+            System.out.println("---------------------------------------");
+
+            // Equipos
+            System.out.println("Equipos:");
+            for (String eq : s.getEquipos()) {
+                System.out.println(" • " + eq);
+            }
+
+            // Partidos
+            System.out.println("\nPartidos del Grupo:");
+            for (Partido p : s.getPartidos()) {
+                System.out.println("  Partido " + p.getNumero() +
+                    " | " + p.getFecha() +
+                    " | " + p.getEstadio() +
+                    " | " + p.getEquipoLocal() + " " + p.getGolesLocal() +
+                    " - " + p.getGolesVisitante() + " " + p.getEquipoVisitante());
+            }
+        }
+
+        // ===== IMPRIMIR LISTA GLOBAL DE PARTIDOS (TU BLOQUE, CORREGIDO) =====
+        System.out.println("\n=== LISTA GLOBAL DE PARTIDOS CARGADOS ===");
+        for (Partido partido : partidosPorNumero.values()) {
+            System.out.println("======================================================");
+            System.out.println("Partido: " + partido.getNumero());
+            System.out.println("Fecha: " + partido.getFecha());
+            System.out.println("Estadio: " + partido.getEstadio());
+            System.out.println("Equipo Local: " + partido.getEquipoLocal());
+            System.out.println("Equipo Visitante: " + partido.getEquipoVisitante());
+            System.out.println("Resultado: " + partido.getEquipoLocal() + " " + partido.getGolesLocal() +
+                               " - " + partido.getGolesVisitante() + " " + partido.getEquipoVisitante());
+            System.out.println("======================================================");
+        }
+
+        // ===== IMPRIMIR PARTICIPANTES Y SUS PRONÓSTICOS =====
+        System.out.println("\n=== PARTICIPANTES ===");
+        for (Participante part : participantes) {
+
+            System.out.println("\n---------------------------------------");
+            System.out.println("Participante: " + part.getNombre() +
+                               " (" + part.getEmail() + ")");
+            System.out.println("---------------------------------------");
+
+            System.out.println("Pronósticos:");
+            for (PronosticoPartido pr : part.getPronosticos()) {
+
+                System.out.print("  Partido " + pr.getNumeroPartido() + ": ");
+
+                if (pr.isDoble())
+                    System.out.print("(X) ");
+
+                System.out.println(
+                    pr.getEquipoLocal() + " " + pr.getGolesLocal() +
+                    " - " + pr.getGolesVisitante() + " " + pr.getEquipoVisitante()
+                );
+            }
+
+            System.out.println("Total de pronósticos dobles (X): " + part.getDobles());
+        }
+
+        // ===== FINAL =====
+        System.out.println("\n>>> Parseo COMPLETO: campeonato, fixture, series y participantes cargados correctamente.");
+        System.out.println(">>> PROCESAMIENTO FINALIZADO.\n");
     
               CUP$parser$result = parser.getSymbolFactory().newSymbol("inicio",0, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-3)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -310,14 +399,44 @@ class CUP$parser$actions {
 
                 // Agregamos los equipos cargados previamente
                 List<String> equipos = equips;
+
+                // ===== VALIDACIÓN: EXACTAMENTE 4 EQUIPOS =====
+                if (equipos.size() != 4) {
+                    System.err.println(
+                        "ERROR: La serie '" + nom + "' tiene " + equipos.size() +
+                        " equipos. Se esperaban exactamente 4."
+                    );
+                }
+
+                // ==== Luego sí agregamos los equipos ====
                 for (String e : equipos) serieActual.addEquipo(e);
 
                 // Agregamos los partidos ya cargados
                 List<Partido> partidos = partList;
-                for (Partido p : partidos) serieActual.addPartido(p);
+                for (Partido p : partidos) {
+
+                    // ===== VALIDACIÓN: equipo local pertenece a la serie =====
+                    if (!equipos.contains(p.equipoLocal)) {
+                        System.err.println(
+                            "ERROR: En la serie '" + nom + "', el equipo local '" +
+                            p.equipoLocal + "' NO pertenece a los 4 equipos de la serie."
+                        );
+                    }
+
+                    // ===== VALIDACIÓN: equipo visitante pertenece a la serie =====
+                    if (!equipos.contains(p.equipoVisitante)) {
+                        System.err.println(
+                            "ERROR: En la serie '" + nom + "', el equipo visitante '" +
+                            p.equipoVisitante + "' NO pertenece a los 4 equipos de la serie."
+                        );
+                    }
+
+                    // Agregar a la serie después de validar
+                    serieActual.addPartido(p);
+                }
 
                 campeonatoActual.agregarSerie(serieActual);
-                System.out.println(">>> Serie cargada: " + nom + " con " + equipos.size() + " equipos y " + partidos.size() + " partidos.");
+                System.out.println(">>> Serie cargada: " + nom + " con " + equipos.size() + " equipos y estos son: " + equipos + ". Cantidad de partidos de la serie: " + partidos.size() + " partidos.");
           
               CUP$parser$result = parser.getSymbolFactory().newSymbol("serie",4, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
@@ -466,7 +585,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // participantes ::= participante 
+          case 16: // lista_participantes ::= participante 
             {
               List<Participante> RESULT =null;
 		int pleft = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).left;
@@ -478,12 +597,12 @@ class CUP$parser$actions {
                     participantes = lista1;
                     RESULT = lista1;
                  
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // participantes ::= participantes participante 
+          case 17: // lista_participantes ::= lista_participantes participante 
             {
               List<Participante> RESULT =null;
 		int lstleft = ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)).left;
@@ -493,12 +612,11 @@ class CUP$parser$actions {
 		int pright = ((java_cup.runtime.Symbol)CUP$parser$stack.peek()).right;
 		Participante p = (Participante)((java_cup.runtime.Symbol) CUP$parser$stack.peek()).value;
 		
-                    List<Participante> lista2 = lst;
-                    lista2.add(p);
-                    participantes = lista2;
-                    RESULT = lista2;
+                    lst.add(p);
+                    participantes = lst;
+                    RESULT = lst;
                  
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
+              CUP$parser$result = parser.getSymbolFactory().newSymbol("lista_participantes",9, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-1)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
 
@@ -522,12 +640,56 @@ class CUP$parser$actions {
                     Participante participante = new Participante(nom, mail);
 
                     List<PronosticoPartido> l = lista;
-                    for (PronosticoPartido pr : l)
-                        participante.addPronostico(pr);
 
-                    System.out.println(">>> Participante cargado: " + nom + " (" + mail + ") con " + l.size() + " pronósticos.");
-                    RESULT = participante;
-                  
+                    // ===== VALIDACIÓN DE PRONÓSTICOS =====
+                    for (PronosticoPartido pr : l) {
+
+                        int numPr = pr.getNumeroPartido();
+
+                        // 1) VALIDAR EXISTENCIA DE PARTIDO
+                        Partido real = partidosPorNumero.get(numPr);
+                        if (real == null) {
+                            System.err.println(
+                                "ERROR: El participante '" + nom + "' pronosticó el partido Nro " +
+                                numPr + " que NO existe en el fixture."
+                            );
+                            continue; // no seguimos validando este pronóstico
+                        }
+
+                        // 2) VALIDAR QUE LOS EQUIPOS COINCIDEN
+                        if (!real.getEquipoLocal().equals(pr.getEquipoLocal())) {
+                            System.err.println(
+                                "ERROR: En el pronóstico del partido " + numPr +
+                                " el equipo local '" + pr.getEquipoLocal() +
+                                "' no coincide con el fixture ('" + real.getEquipoLocal() + "')."
+                            );
+                        }
+
+                        if (!real.getEquipoVisitante().equals(pr.getEquipoVisitante())) {
+                            System.err.println(
+                                "ERROR: En el pronóstico del partido " + numPr +
+                                " el equipo visitante '" + pr.getEquipoVisitante() +
+                                "' no coincide con el fixture ('" + real.getEquipoVisitante() + "')."
+                            );
+                        }
+
+                        // Agregar el pronóstico ya validado
+                        participante.addPronostico(pr);
+                    }
+
+                    // Guardar participante en la lista global
+                    participantes.add(participante);
+
+                    // UN participante no puede tener mas de 4 marcas
+                    if (participante.getDobles() > 4) {
+                        System.err.println("ERROR: El participante '" + nom +
+                                           "' tiene " + participante.getDobles() +
+                                           " pronósticos dobles. Máximo permitido: 4.");
+                    }
+
+                    System.out.println(">>> Participante cargado: " + nom + " (" + mail +
+                        ") con " + l.size() + " pronósticos.");
+                
               CUP$parser$result = parser.getSymbolFactory().newSymbol("participante",10, ((java_cup.runtime.Symbol)CUP$parser$stack.elementAt(CUP$parser$top-6)), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
             }
           return CUP$parser$result;
