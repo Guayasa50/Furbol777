@@ -53,7 +53,8 @@ non terminal String equipo;
 non terminal List<Partido> partidos;
 non terminal Partido partido;
 
-non terminal List<Participante> lista_participantes;
+non terminal List<Participante> participantes_nt;
+
 non terminal Participante participante;
 
 non terminal List<PronosticoPartido> pronosticos;
@@ -78,7 +79,7 @@ inicio ::=
     campeonato
     fixture
     series
-    lista_participantes
+    participantes_nt
     {:
         // ===== VALIDAR CANTIDAD TOTAL DE SERIES =====
         int cant = campeonatoActual.getSeries().size();
@@ -338,20 +339,21 @@ partido ::= PARTIDO_NRO
 // --------------------------
 // PARTICIPANTES
 // --------------------------
-lista_participantes ::= participante:p
+participantes_nt ::= participante:p
                  {:
                     List<Participante> lista1 = new ArrayList<>();
                     lista1.add(p);
-                    participantes = lista1;
+                    participantes = lista1;   // variable global
                     RESULT = lista1;
                  :}
-               | lista_participantes:lst participante:p
+               | participantes_nt:lst participante:p
                  {:
                     lst.add(p);
-                    participantes = lst;
+                    participantes = lst;       // variable global
                     RESULT = lst;
                  :}
 ;
+
 
 
 
