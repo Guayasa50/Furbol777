@@ -1,8 +1,0 @@
-Campeonato Mundial 2026
-Fixture
-SERIE GrupoA
-Equipos: [Japon, Qatar, Alemania, Uruguay]
-Partido Nro: 1
-2026/06/15 - "Estadio Monumental"
-Japon 2 - Qatar 1
-

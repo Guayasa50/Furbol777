@@ -7,9 +7,7 @@ public class Estadistica {
 
         System.out.println("\n=== ESTADÍSTICAS DEL CAMPEONATO ===");
 
-        // =============================================
-        // 1) EQUIPO MÁS GOLEADO
-        // =============================================
+        // 1) Equipo mas goleado
 
         Map<String, Integer> golesRecibidos = new HashMap<>();
 
@@ -37,8 +35,7 @@ public class Estadistica {
                 equipoMasGoleado + " (" + maxGoles + " goles recibidos)");
 
         // =============================================
-        // 2) PROMEDIO DE GOLES POR PARTIDO
-        // =============================================
+        // 2) Promedio de goles por partido
 
         int golesTotales = 0;
         for (Partido p : partidosPorNumero.values()) {
@@ -51,10 +48,8 @@ public class Estadistica {
                 String.format("%.2f", promedio));
 
 
-        // =============================================
-        // 3) EQUIPO MEJOR PRONOSTICADO
-        // (equipos donde más veces acertaron la TENDENCIA)
-        // =============================================
+
+        // 3) Equipo que pronosticaron mejor
 
         Map<String, Integer> aciertosPorEquipo = new HashMap<>();
 

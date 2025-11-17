@@ -1,0 +1,104 @@
+Campeonato Mundial 2026
+Fixture
+SERIE GrupoA
+Equipos: [Japón, Qatar, Alemania, Uruguay]
+Partido Nro: 1
+2026/06/15 - "Estadio Monumental"
+Japón 2 - Qatar 1
+Partido Nro: 2
+2026/06/15 - "Estadio Monumental"
+Japón 0 - Alemania 1
+Partido Nro: 3
+2026/06/15 - "Estadio Monumental"
+Japón 1 - Uruguay 1
+Partido Nro: 4
+2026/06/16 - "Estadio Porahi"
+Qatar 0 - Alemania 2
+Partido Nro: 5
+2026/06/16 - "Estadio Porahi"
+Qatar 1 - Uruguay 2
+Partido Nro: 6
+2026/06/16 - "Estadio Porahi"
+Alemania 3 - Uruguay 2
+
+SERIE GrupoF
+Equipos: [México, Argentina, Portugal, Senegal]
+Partido Nro: 30
+2026/07/05 - "Antelcito Arena"
+México 1 - Argentina 2
+Partido Nro: 31
+2026/07/05 - "Antelcito Arena"
+México 1 - Portugal 2
+Partido Nro: 32
+2026/06/26 - "Azteca Stadium"
+México 2 - Senegal 1
+Partido Nro: 33
+2026/06/26 - "Azteca Stadium"
+Argentina 3 - Portugal 1
+Partido Nro: 34
+2026/06/26 - "Azteca Stadium"
+Argentina 2 - Senegal 0
+Partido Nro: 35
+2026/06/26 - "Azteca Stadium"
+Portugal 1 - Senegal 1
+
+SERIE GrupoC
+Equipos: [España, Italia, Croacia, Bélgica]
+Partido Nro: 40
+2026/02/11 - "Estadio Maracaná"
+España 2 - Italia 1
+Partido Nro: 41
+2026/07/10 - "Estadio Maracaná"
+España 1 - Croacia 0
+Partido Nro: 42
+2026/07/11 - "Estadio Central"
+España 1 - Bélgica 1
+Partido Nro: 43
+2026/07/11 - "Estadio Central"
+Italia 2 - Croacia 2
+Partido Nro: 44
+2026/07/11 - "Estadio Central"
+Italia 1 - Bélgica 1
+Partido Nro: 45
+2026/07/11 - "Estadio Central"
+Croacia 0 - Bélgica 2
+
+SERIE GrupoD
+Equipos: [Inglaterra, Canadá, Ghana, Irán]
+Partido Nro: 50
+2026/07/12 - "Wembley"
+Inglaterra 3 - Canadá 1
+Partido Nro: 51
+2026/07/12 - "Wembley"
+Inglaterra 2 - Ghana 0
+Partido Nro: 52
+2026/07/13 - "Estadio Norte"
+Inglaterra 1 - Irán 1
+Partido Nro: 53
+2026/07/13 - "Estadio Norte"
+Canadá 1 - Ghana 1
+Partido Nro: 54
+2026/07/13 - "Estadio Norte"
+Canadá 2 - Irán 2
+Partido Nro: 55
+2026/07/13 - "Estadio Norte"
+Ghana 2 - Irán 0
+
+*-*-*-*-*-*-*-*-*-*-
+Participante: Yosepo Coinada - y.coinada@yahoo.com
+Pronosticos Partidos:
+1: Japón 1 - Qatar 2
+2: (X) Japón 0 - Alemania 2
+30: (X) México 1 - Argentina 2
+32: México 2 - Senegal 0
+40: España 1 - Italia 0
+53: (X) Canadá 1 - Ghana 1
+*-*-*-*-*-*-*-*-*-*-
+Participante: Pepe Repepe - pepe@mail.com
+Pronosticos Partidos:
+1: Japón 1 - Qatar 2
+2: (X) Japón 0 - Alemania 2
+30: México 1 - Argentina 2
+32: México 2 - Senegal 1
+40: España 2 - Italia 1
+51: Inglaterra 1 - Ghana 0

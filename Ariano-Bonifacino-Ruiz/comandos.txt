@@ -1,0 +1,7 @@
+cd Ariano-Bonifacino-Ruiz
+java -jar jflex-full-1.9.1.jar pronosticos.flex
+java -jar java-cup-11b.jar pronosticos.cup
+javac -cp ".;java-cup-11b-runtime.jar" *.java
+java -cp ".;java-cup-11b-runtime.jar" Main pronosticos.txt
+
+dir /s pronosticos.cup

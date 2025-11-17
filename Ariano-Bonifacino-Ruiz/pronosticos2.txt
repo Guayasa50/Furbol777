@@ -1,0 +1,108 @@
+Campeonato Liga Uruguaya 2027
+Fixture
+
+SERIE GrupoA
+Equipos: [Peñarol, Nacional, Danubio, Fénix]
+Partido Nro: 1
+2027/03/10 - "Campeón del Siglo"
+Peñarol 2 - Nacional 1
+Partido Nro: 2
+2027/03/15 - "Gran Parque Central"
+Nacional 1 - Danubio 0
+Partido Nro: 3
+2027/03/18 - "Jardines"
+Danubio 1 - Fénix 1
+Partido Nro: 4
+2027/03/20 - "Jardines"
+Fénix 2 - Peñarol 2
+Partido Nro: 5
+2027/03/25 - "Gran Parque Central"
+Danubio 0 - Peñarol 1
+Partido Nro: 6
+2027/03/30 - "Campeón del Siglo"
+Nacional 3 - Fénix 2
+
+SERIE GrupoB
+Equipos: [Liverpool, Wanderers, Cerro, Torque]
+Partido Nro: 30
+2027/04/31 - "Belvedere"
+Liverpool 1 - Wanderers 1
+Partido Nro: 31
+2027/04/10 - "Viera"
+Wanderers 2 - Cerro 0
+Partido Nro: 32
+2027/04/15 - "Parque Capurro"
+Cerro 0 - Torque 0
+Partido Nro: 33
+2027/04/21 - "Belvedere"
+Liverpool 1 - Torque 3
+Partido Nro: 34
+2027/04/25 - "Viera"
+Wanderers 1 - Liverpool 1
+Partido Nro: 35
+2027/04/30 - "Viera"
+Torque 2 - Cerro 1
+
+SERIE GrupoC
+Equipos: [Defensor, Rampla, Rentistas, Albion]
+Partido Nro: 40
+2027/05/01 - "Franzini"
+Defensor 2 - Rentistas 2
+Partido Nro: 41
+2027/05/05 - "Olimpico"
+Rampla 1 - Albion 0
+Partido Nro: 42
+2027/05/10 - "Franzini"
+Rentistas 1 - Rampla 1
+Partido Nro: 43
+2027/05/15 - "Parque Saroldi"
+Albion 0 - Defensor 0
+Partido Nro: 44
+2027/05/20 - "Franzini"
+Defensor 3 - Rentistas 1
+Partido Nro: 45
+2027/05/25 - "Olimpico"
+Rampla 2 - Albion 2
+
+SERIE GrupoD
+Equipos: [Progreso, Miramar, Sud América, Villa Española]
+Partido Nro: 50
+2027/06/01 - "Paladino"
+Progreso 1 - Miramar 0
+Partido Nro: 51
+2027/06/05 - "Paladino"
+Miramar 2 - Sud América 1
+Partido Nro: 52
+2027/06/09 - "Obdulio Varela"
+Sud América 1 - Villa Española 1
+Partido Nro: 53
+2027/06/12 - "Obdulio Varela"
+Progreso 0 - Sud América 0
+Partido Nro: 54
+2027/06/18 - "Obdulio Varela"
+Villa Española 2 - Progreso 2
+Partido Nro: 55
+2027/06/22 - "Paladino"
+Sud América 2 - Miramar 1
+
+*-*-*-*-*-*-*-*-*-*-
+Participante: Mario Suárez - mario_suarez@mail.com
+Pronosticos Partidos:
+1: Peñarol 3 - Nacional 0
+2: Nacional 2 - Danubio 1
+30: Liverpool 2 - Wanderers 0
+32: Cerro 1 - Torque 0
+40: Defensor 2 - Rentistas 1
+53: (X) Progreso 1 - Sud América 2
+3: (X) Danubio 2 - Fénix 2
+45: Rampla 2 - Albion 2
+*-*-*-*-*-*-*-*-*-*-
+Participante: Lucia Gómez - lucia@mail.com
+Pronosticos Partidos:
+1: Peñarol 1 - Nacional 1
+2: Danubio 3 - Nacional 1
+3: Fénix 0 - Danubio 0
+41: Albion 0 - Rampla 1
+42: (X) Rentistas 1 - Rampla 0
+54: (X) Villa Española 4 - Progreso 0
+55: Miramar 1 - Sud América 3

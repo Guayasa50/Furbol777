@@ -1,0 +1,514 @@
+import java_cup.runtime.*;
+import java.util.*;
+
+// ==========================
+// CÓDIGO DEL PARSER
+
+parser code {:
+    // Acá vamos guardando el campeonato a medida que se parsea el archivo
+    Campeonato campeonatoActual = null;
+
+    // Esto nos sirve para saber en qué serie estamos cuando leemos los partidos que vienen después
+    Serie serieActual = null;
+
+    // Usamos para validar los pronósticos más adelante
+    Map<Integer, Partido> partidosPorNumero = new HashMap<Integer, Partido>();
+
+    // Participantes válidos
+    List<Participante> participantes = new ArrayList<>();
+
+    // Participantes inválidos
+    List<String> participantesInvalidos = new ArrayList<>();
+:};
+
+// ==========================
+// TOKENS DEL LEXER
+
+terminal CAMPEONATO, FIXTURE, SERIE, EQUIPOS;
+terminal PARTIDO_NRO, PARTICIPANTE, PRONOSTICOS_PARTIDOS;
+
+terminal CORCHETE_ABRE, CORCHETE_CIERRE;
+terminal COMA, DOSPUNTOS, GUION, SEPARADOR, DOBLE;
+
+terminal Integer NUMERO;
+terminal String FECHA, EMAIL, ESTADIO, NOMBRE;
+
+// ==========================
+// NO TERMINALES
+
+non terminal Object inicio;
+
+non terminal Object campeonato;
+non terminal Object fixture;
+
+non terminal List<Serie> series;
+non terminal Serie serie;
+
+non terminal List<String> lista_equipos;
+non terminal String equipo;
+
+non terminal List<Partido> partidos;
+non terminal Partido partido;
+
+non terminal List<Participante> participantes_nt;
+
+non terminal Participante participante;
+
+non terminal List<PronosticoPartido> pronosticos;
+non terminal PronosticoPartido pronostico;
+
+non terminal String nombre_compuesto;
+
+// ==========================
+// SÍMBOLO INICIAL
+
+start with inicio;
+
+// ==========================
+// GRAMÁTICA
+
+// --------------------------
+// PROGRAMA COMPLETO
+inicio ::=
+    campeonato
+    fixture
+    series
+    participantes_nt
+    {:
+        // Primero verificamos cuántas series se cargaron
+        // La letra dice 4, 8 o 12, así que lo controlamos aca
+        int cant = campeonatoActual.getSeries().size();
+        if (cant != 4 && cant != 8 && cant != 12) {
+            System.err.println(
+                "ERROR: Se encontraron " + cant + " series. Deben ser 4, 8 o 12."
+            );
+        }
+
+        // Acá ya imprimimos lo que se proceso
+        System.out.println("\n\n=======================================");
+        System.out.println("     PROCESAMIENTO FINAL DEL ARCHIVO   ");
+        System.out.println("=======================================\n");
+
+        System.out.println("=== CAMPEONATO ===");
+        System.out.println(campeonatoActual.getNombre() + " " + campeonatoActual.getAnio());
+
+        // Mostramos las series con sus equipos y partidos
+        System.out.println("\n=== SERIES ===");
+        for (Serie s : campeonatoActual.getSeries()) {
+
+            System.out.println("\n---------------------------------------");
+            System.out.println("Serie: " + s.getNombre());
+            System.out.println("---------------------------------------");
+
+            // Equipos del grupo
+            System.out.println("Equipos:");
+            for (String eq : s.getEquipos()) {
+                System.out.println("  - " + eq);
+            }
+
+            // Partidos del grupo
+            System.out.println("\nPartidos del Grupo:");
+            for (Partido p : s.getPartidos()) {
+                System.out.println(
+                    "  Partido " + p.getNumero() +
+                    " | " + p.getFecha() +
+                    " | " + p.getEstadio() +
+                    " | " + p.getEquipoLocal() + " " + p.getGolesLocal() +
+                    " - " + p.getGolesVisitante() + " " + p.getEquipoVisitante()
+                );
+            }
+        }
+
+        // Imprimimos todos los partidos guardados
+        System.out.println("\n=== LISTA GLOBAL DE PARTIDOS CARGADOS ===");
+        for (Partido partido : partidosPorNumero.values()) {
+            System.out.println("======================================================");
+            System.out.println("Partido: " + partido.getNumero());
+            System.out.println("Fecha: " + partido.getFecha());
+            System.out.println("Estadio: " + partido.getEstadio());
+            System.out.println("Equipo Local: " + partido.getEquipoLocal());
+            System.out.println("Equipo Visitante: " + partido.getEquipoVisitante());
+            System.out.println("Resultado: " + partido.getEquipoLocal() + " " + partido.getGolesLocal() +
+                               " - " + partido.getGolesVisitante() + " " + partido.getEquipoVisitante());
+            System.out.println("======================================================");
+        }
+
+        // Participantes cargados
+        System.out.println("\n=== PARTICIPANTES ===");
+        for (Participante part : participantes) {
+            if (part == null) {
+                System.err.println("ERROR: Participante NULL (se descartó antes).");
+                continue;
+            }
+
+            System.out.println("\n---------------------------------------");
+            System.out.println("Participante: " + part.getNombre() +
+                               " (" + part.getEmail() + ")");
+            System.out.println("---------------------------------------");
+
+            // Listamos pronósticos
+            System.out.println("Pronósticos:");
+            for (PronosticoPartido pr : part.getPronosticos()) {
+
+                System.out.print("  Partido " + pr.getNumeroPartido() + ": ");
+
+                if (pr.isDoble())
+                    System.out.print("(X) "); // marcamos cuando es doble
+
+                System.out.println(
+                    pr.getEquipoLocal() + " " + pr.getGolesLocal() +
+                    " - " + pr.getGolesVisitante() + " " + pr.getEquipoVisitante()
+                );
+            }
+
+            System.out.println("Total de pronósticos dobles (X): " + part.getDobles());
+        }
+
+        // Participantes inválidos
+        System.out.println("\n=== PARTICIPANTES DESCARTADOS ===");
+
+        if (participantesInvalidos.isEmpty()) {
+            System.out.println("No hubo participantes inválidos.");
+        } else {
+            for (String msgInv : participantesInvalidos) {
+                System.out.println(msgInv);
+            }
+        }
+
+        // Ranking
+        System.out.println("\n=== RANKING DE PARTICIPANTES ===");
+
+        Map<Participante, Integer> puntajes = new HashMap<>();
+
+        // Calculamos el puntaje de cada participante con la clase Puntaje
+        for (Participante p : participantes) {
+            int pts = Puntaje.puntajeTotal(p, partidosPorNumero);
+            puntajes.put(p, pts);
+        }
+
+        // Ordenamos de mayor a menor
+        List<Map.Entry<Participante, Integer>> ranking =
+                new ArrayList<>(puntajes.entrySet());
+
+        ranking.sort((a, b) -> b.getValue() - a.getValue());
+
+        int pos = 1;
+        for (Map.Entry<Participante, Integer> entry : ranking) {
+            Participante p = entry.getKey();
+            int pts = entry.getValue();
+
+            System.out.println(
+                pos + ") " + p.getNombre() +
+                " (" + p.getEmail() + ") - " +
+                pts + " puntos"
+            );
+            pos++;
+        }
+
+        // Estadísticas finales
+        Estadistica.generar(partidosPorNumero, participantes);
+
+        System.out.println("\n>>> Parseo COMPLETO OK.");
+        System.out.println(">>> PROCESAMIENTO FINALIZADO.\n");
+    :}
+;
+
+// --------------------------
+// CAMPEONATO
+campeonato ::= CAMPEONATO nombre_compuesto:nombre NUMERO:anio
+               {:
+                    // Creamos el objeto Campeonato con su nombre y año
+                    campeonatoActual = new Campeonato(nombre, anio);
+
+                    System.out.println(">>> Campeonato cargado: " + nombre + " (" + anio + ")");
+               :}
+;
+
+// --------------------------
+// NOMBRE COMPUESTO
+nombre_compuesto ::=
+      NOMBRE:n
+        {:
+            // Arrancamos con un nombre solo
+            RESULT = n;
+        :}
+    | nombre_compuesto:prev NOMBRE:n
+        {:
+            // Acá vamos acumulando palabras para nombres de varias palabras
+            RESULT = prev + " " + n;
+        :}
+;
+
+// --------------------------
+// FIXTURE
+fixture ::=
+    FIXTURE
+    {:
+        // No hacemos nada especial, solo marcamos que lo leímos
+    :}
+;
+
+// --------------------------
+// SERIES (lista de series)
+series ::=
+      serie
+    | series serie
+;
+
+// --------------------------
+// UNA SERIE COMPLETA
+serie ::= SERIE nombre_compuesto:nombre
+          EQUIPOS CORCHETE_ABRE lista_equipos:equips CORCHETE_CIERRE
+          partidos:partList
+          {:
+                // Creamos la serie
+                serieActual = new Serie(nombre);
+
+                // Validamos la cantidad de equipos
+                if (equips.size() != 4) {
+                    System.err.println(
+                        "ERROR: La serie '" + nombre + "' tiene " + equips.size() +
+                        " equipos. Debían ser 4."
+                    );
+                }
+
+                // Agregamos equipos a la serie
+                for (String e : equips) serieActual.addEquipo(e);
+
+                // Ahora xamos los partidos de esta serie
+                for (Partido p : partList) {
+
+                    if (p == null) {
+                        System.err.println(
+                            "Se descartó un partido inválido en '" + nombre + "'."
+                        );
+                        continue;
+                    }
+
+                    // Validamos q los equipos del partido realmente sean de esta serie
+                    if (!equips.contains(p.getEquipoLocal())) {
+                        System.err.println(
+                            "ERROR: En '" + nombre + "', el local '" +
+                            p.getEquipoLocal() + "' no pertenece a la serie."
+                        );
+                    }
+
+                    if (!equips.contains(p.getEquipoVisitante())) {
+                        System.err.println(
+                            "ERROR: En '" + nombre + "', el visitante '" +
+                            p.getEquipoVisitante() + "' no pertenece a la serie."
+                        );
+                    }
+
+                    serieActual.addPartido(p);
+                }
+
+                // Finalmente agregamos la serie al campeonato
+                campeonatoActual.agregarSerie(serieActual);
+
+                System.out.println(
+                    "> Serie cargada: " + nombre +
+                    ". Equipos: " + equips.size() +
+                    ". Partidos válidos: " + serieActual.getPartidos().size()
+                );
+          :}
+;
+
+// --------------------------
+// EQUIPOS
+equipo ::= NOMBRE:n
+        {:
+            // Un nombre simple
+            RESULT = n;
+        :}
+    | equipo:prev NOMBRE:n
+        {:
+            // Nombre con varias palabras
+            RESULT = prev + " " + n;
+        :}
+;
+
+lista_equipos ::= equipo:elem
+                 {:
+                     // Arrancamos una lista nueva
+                     List<String> lista1 = new ArrayList<>();
+                     lista1.add(elem);
+                     RESULT = lista1;
+                 :}
+               | lista_equipos:lst COMA equipo:elem
+                 {:
+                     // Seguimos agregando equipos a la lista
+                     lst.add(elem);
+                     RESULT = lst;
+                 :}
+;
+
+// --------------------------
+// PARTIDOS
+partidos ::= partido:p
+             {:
+                // Creamos una lista nueva con el primer partido
+                List<Partido> lista1 = new ArrayList<>();
+                lista1.add(p);
+                RESULT = lista1;
+             :}
+           | partidos:lst partido:p
+             {:
+                // Vamos agregando partidos
+                lst.add(p);
+                RESULT = lst;
+             :}
+;
+
+// --------------------------
+// UN PARTIDO
+partido ::= PARTIDO_NRO
+            NUMERO:num
+            FECHA:fecha GUION ESTADIO:est
+            equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
+            {:
+                // Primero validamos la fecha con la clase Fecha
+                if (!Fecha.fechaValida(fecha)) {
+                    System.err.println("ERROR: Fecha inválida en partido " + num + ": " + fecha);
+                    RESULT = null;
+                } else {
+                    // Si la fecha está ok, armamos el objeto partido
+                    Partido p = new Partido(
+                        num, fecha, est,
+                        local, gL,
+                        visitante, gV
+                    );
+
+                    // Lo guardamos en el mapa global para validar pronósticos después
+                    partidosPorNumero.put(num, p);
+
+                    RESULT = p;
+                }
+            :}
+;
+
+// --------------------------
+// PARTICIPANTES
+participantes_nt ::= participante:p
+                 {:
+                    // Creamos la lista inicial con el primer participante (si es válido)
+                    List<Participante> lista1 = new ArrayList<>();
+                    if (p != null) lista1.add(p);
+                    participantes = lista1;
+                    RESULT = lista1;
+                 :}
+               | participantes_nt:lst participante:p
+                 {:
+                    // Vamos agregando participantes válidos
+                    if (p != null) lst.add(p);
+                    participantes = lst;
+                    RESULT = lst;
+                 :}
+;
+
+// --------------------------
+// PARTICIPANTE
+participante ::= SEPARADOR
+                  PARTICIPANTE
+                  nombre_compuesto:nombre
+                  GUION EMAIL:email
+                  PRONOSTICOS_PARTIDOS
+                  pronosticos:lista
+                {:
+                    // Armamos un participante temporal antes de validar
+                    Participante participanteTemp = new Participante(nombre, email);
+
+                    boolean invalido = false;
+                    String motivo = "";
+
+                    // Vamos pronóstico por pronóstico para validar q coincidan con los partidos reales
+                    for (PronosticoPartido pr : lista) {
+
+                        Partido real = partidosPorNumero.get(pr.getNumeroPartido());
+
+                        if (real == null) {
+                            motivo = "Pronosticó un partido que no existe: " + pr.getNumeroPartido();
+                            invalido = true;
+                            break;
+                        }
+
+                        if (!real.getEquipoLocal().equals(pr.getEquipoLocal())) {
+                            motivo = "Local incorrecto en partido " + pr.getNumeroPartido();
+                            invalido = true;
+                            break;
+                        }
+
+                        if (!real.getEquipoVisitante().equals(pr.getEquipoVisitante())) {
+                            motivo = "Visitante incorrecto en partido " + pr.getNumeroPartido();
+                            invalido = true;
+                            break;
+                        }
+
+                        // Si esta bein se agrega al pronostico
+                        participanteTemp.addPronostico(pr);
+                    }
+
+                    // Limite de dobles
+                    if (!invalido && participanteTemp.getDobles() > campeonatoActual.getMaxDobles()) {
+                        motivo = "Excedió el máximo de dobles permitidos (" +
+                                 campeonatoActual.getMaxDobles() + ").";
+                        invalido = true;
+                    }
+
+                    if (invalido) {
+                        // Lo descartamos y guardamos el motivo para mostrarlo al final
+                        String msg =
+                                    "---------------------------------------\n" +
+                                    "PARTICIPANTE DESCARTADO\n" +
+                                    "Nombre: " + nombre + "\n" +
+                                    "Email: " + email + "\n" +
+                                    "Motivo: " + motivo + "\n" +
+                                    "---------------------------------------";
+
+                        participantesInvalidos.add(msg);
+
+                        RESULT = null;
+                    }
+                    else {
+                        // Si pasó todas las validaciones, lo devolvemos
+                        RESULT = participanteTemp;
+                    }
+                :}
+;
+
+// --------------------------
+// PRONÓSTICOS
+pronosticos ::= pronostico:p
+               {:
+                    // Lista nueva con el primer pronóstico
+                    List<PronosticoPartido> lista1 = new ArrayList<>();
+                    lista1.add(p);
+                    RESULT = lista1;
+               :}
+             | pronosticos:lst pronostico:p
+               {:
+                    // Vamos agregando pronósticos a la lista
+                    lst.add(p);
+                    RESULT = lst;
+               :}
+;
+
+// --------------------------
+// PRONÓSTICO INDIVIDUAL
+pronostico ::= NUMERO:num DOSPUNTOS
+                equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
+                {:
+                    // Pronostico normal (sin doble)
+                    RESULT = new PronosticoPartido(
+                        num, local, gL, visitante, gV, false
+                    );
+                :}
+             | NUMERO:num DOSPUNTOS DOBLE
+                equipo:local NUMERO:gL GUION equipo:visitante NUMERO:gV
+                {:
+                    // Pronóstico doble
+                    RESULT = new PronosticoPartido(
+                        num, local, gL, visitante, gV, true
+                    );
+                :}
+;

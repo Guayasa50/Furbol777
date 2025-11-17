@@ -16,13 +16,13 @@ public class Fecha {
 
             int dia, mes, anio;
 
-            // ===== FORMATO: AAAA/MM/DD =====
+            // FORMATO: AAAA/MM/DD
             if (p1.length() == 4) {
                 anio = Integer.parseInt(p1);
                 mes  = convertirMes(p2);
                 dia  = Integer.parseInt(p3);
             }
-            // ===== FORMATO: DD/MM/AAAA =====
+            // FORMATO: DD/MM/AAAA
             else {
                 dia  = Integer.parseInt(p1);
                 mes  = convertirMes(p2);
